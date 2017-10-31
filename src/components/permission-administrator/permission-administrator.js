@@ -4,7 +4,7 @@ import Permission from '../permission/permission';
 import Table from '../table/table';
 
 import _ from 'lodash';
-import { Tag, Popconfirm } from 'antd';
+import { Tag, Popconfirm, message } from 'antd';
 import PermissionAddAdminModal from '../permission-add-admin-modal/permission-add-admin-modal';
 import PermissionAdminHasRolePreview from
   '../permission-admin-has-role-preview/permission-admin-has-role-preview';
@@ -13,6 +13,17 @@ export default class PermissionAdministrator extends React.Component {
 
   onAdminHasRolePreviewClose() {
     this.refs.table.fetchData();
+  }
+
+  onReset(id) {
+    DI.get('permissionHttp').resetAdminKey(id)
+      .then(() => {
+        message.success('重置成功');
+        this.refs.table.fetchData();
+      })
+      .catch(() => {
+        message.error('重置失败');
+      });
   }
 
   columns = [
@@ -46,6 +57,11 @@ export default class PermissionAdministrator extends React.Component {
       )
     },
     {
+      title: '二步验证状态',
+      dataIndex: 'key_verified',
+      show: true
+    },
+    {
       title: '操作',
       show: true,
       render: (value) => (
@@ -68,7 +84,19 @@ export default class PermissionAdministrator extends React.Component {
               cancelText="否"
               onConfirm={() => this.refs.table.onDelete({ value: value.account_id })}
             >
-              <a href="#" >删除</a>
+              <a href="#">删除</a>
+            </Popconfirm>
+          </Permission>
+          <Permission
+            needPermission={['put@/v1/permission/account/:id/reset_two_factor_key']}
+          >
+            <Popconfirm
+              title={`确定要为ID:${value.account_id}的重置二步验证吗?`}
+              okText="是"
+              cancelText="否"
+              onConfirm={() => ::this.onReset(value.account_id)}
+            >
+              <a href="#">重置二步验证</a>
             </Popconfirm>
           </Permission>
         </div>
