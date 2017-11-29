@@ -1,6 +1,12 @@
 # antd_manage_core
 
 # ChangeLog
+### v1.1.32
+* 添加 ImageUploader 组件
+    * 属性
+    * limit 上传图片数量限制(可选)
+    * qiniuToken object { token bucketUrl } 七牛上传token和bucketUrl
+
 ### v1.1.31
 * 增加重置管理员二步验证功能
 
