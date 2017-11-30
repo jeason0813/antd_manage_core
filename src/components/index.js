@@ -20,6 +20,7 @@ export LoginModal from './login/login-modal';
 export Main from './main/main';
 export MarkdownEditor from './markdown-editor/markdown-editor';
 export Editor from './editor/editor';
+export ImageUploader from './image-uploader/image-uploader';
 export Navigation from './navigation/navigation';
 export NotFound from './not-found/not-found';
 export Root from './root/root';

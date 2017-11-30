@@ -3,4 +3,6 @@ node_modules
 configs/config.local.*
 build
 .idea/
+.DS_Store
+*/.DS_Store
 npm-debug.log
