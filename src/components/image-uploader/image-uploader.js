@@ -1,6 +1,8 @@
 import React from 'react';
-import { Upload, Icon, Modal, message } from 'antd';
+import _ from 'lodash';
 import DI from '../../di';
+import message from '../message/message';
+import { Upload, Icon, Modal } from 'antd';
 import styles from './image-uploader.styl';
 
 export default class ImageUploader extends React.Component {
@@ -15,22 +17,23 @@ export default class ImageUploader extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     const { qiniuToken, value } = nextProps;
+    const { fileList } = this.state;
     const uptoken = qiniuToken ? qiniuToken.token : '';
     const bucketUrl = qiniuToken ? qiniuToken.bucketUrl : '';
     this.setState({ uptoken, bucketUrl });
     if (value) {
       const valueList = value.split(',');
-      if (valueList.length !== this.state.fileList.length) {
-        const fileList = [];
+      if (valueList.length !== fileList.length) {
+        const tmpFileList = [];
 
         valueList.forEach((img, index) => {
-          fileList.push({
+          tmpFileList.push({
             uid: ((index + 1) * (-1)),
             url: img
           });
         });
 
-        this.setState({ fileList });
+        this.setState({ fileList: tmpFileList });
       }
     } else {
       this.setState({ fileList: [], previewImageUrl: '', previewVisible: false });
@@ -49,12 +52,8 @@ export default class ImageUploader extends React.Component {
       message.error(`上传失败 请刷新页面后重试 ${file.error}`);
     }
     this.setState({ fileList }, () => {
-      const valueList = this.props.value.split(',');
-      if ((file && file.status === 'done') || (valueList.length !== fileList.length)) {
-        const urlArray = [];
-        fileList.forEach((img) => {
-          urlArray.push(img.url);
-        });
+      const urlArray = _.map(fileList, 'url');
+      if ((urlArray.length === 0) || (urlArray[urlArray.length - 1] !== undefined)) {
         that.onFormChange(urlArray.join(','));
       }
     });
