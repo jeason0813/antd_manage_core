@@ -1,6 +1,9 @@
 # antd_manage_core
 
 # ChangeLog
+### v1.1.33
+* ImageUploader 组件更新
+
 ### v1.1.32
 * 添加 ImageUploader 组件
     * 属性
