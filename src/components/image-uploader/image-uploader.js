@@ -15,12 +15,35 @@ export default class ImageUploader extends React.Component {
 
   state = { fileList: [], previewImageUrl: '', previewVisible: false };
 
+  componentWillMount() {
+    const { qiniuToken, value } = this.props;
+    if (qiniuToken) {
+      const uptoken = qiniuToken.token;
+      const bucketUrl = qiniuToken.bucketUrl;
+      this.setState({ uptoken, bucketUrl });
+    }
+    if (value) {
+      const valueList = value.split(',');
+      const tmpFileList = [];
+
+      valueList.forEach((img, index) => {
+        tmpFileList.push({
+          uid: ((index + 1) * (-1)),
+          url: img
+        });
+      });
+      this.setState({ fileList: tmpFileList });
+    }
+  }
+
   componentWillReceiveProps(nextProps) {
     const { qiniuToken, value } = nextProps;
     const { fileList } = this.state;
-    const uptoken = qiniuToken ? qiniuToken.token : '';
-    const bucketUrl = qiniuToken ? qiniuToken.bucketUrl : '';
-    this.setState({ uptoken, bucketUrl });
+    if (qiniuToken && (this.props.qiniuToken !== qiniuToken)) {
+      const uptoken = qiniuToken ? qiniuToken.token : '';
+      const bucketUrl = qiniuToken ? qiniuToken.bucketUrl : '';
+      this.setState({ uptoken, bucketUrl });
+    }
     if (value) {
       const valueList = value.split(',');
       if (valueList.length !== fileList.length) {

@@ -1,6 +1,9 @@
 # antd_manage_core
 
 # ChangeLog
+### v1.1.34
+* 修复图片上传bug
+
 ### v1.1.33
 * ImageUploader 组件更新
 
