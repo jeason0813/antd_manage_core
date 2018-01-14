@@ -22,14 +22,16 @@ class TwoFactorAuthentication extends React.Component {
   }
 
   onRemoveValidator() {
-    DI.get('authHttp').resetKey().then(() => {
-      DI.get('auth').setKeyVerified('N');
-      this.setState({
-        verified: 'N'
+    DI.get('authHttp').resetKey()
+      .then(() => {
+        DI.get('auth').setKeyVerified('N');
+        this.setState({
+          verified: 'N'
+        });
+      })
+      .catch(() => {
+        message.error('移除身份验证器失败!');
       });
-    }).catch(() => {
-      message.error('移除身份验证器失败!');
-    });
   }
 
   onVerifySuccess() {
@@ -57,7 +59,7 @@ class TwoFactorAuthentication extends React.Component {
     const setValidatorExtra = (
       <Popover
         bottom="bottom"
-        content={<Authenticator onVerifySuccess={::this.onVerifySuccess}/>}
+        content={<Authenticator onVerifySuccess={::this.onVerifySuccess} />}
         trigger="click"
         overlayClassName={styles['set-validator-extra']}
       >

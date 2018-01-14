@@ -1,6 +1,6 @@
 import OfflineStorage from './offline-storge';
 import { injectable } from 'inversify';
-import DI  from '../di';
+import DI from '../di';
 
 @injectable()
 class CommonOfflineStorage extends OfflineStorage {

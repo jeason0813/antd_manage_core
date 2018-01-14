@@ -119,11 +119,10 @@ class ConditionPreview extends React.Component {
   }
 
   showConditionsBlock(conditions, type) {
-
     const { format } = this.props;
     let formatClassName;
     if (format) {
-        formatClassName = styles.format;
+      formatClassName = styles.format;
     }
     let items = this.parseConditions(conditions);
     if (!items) {
@@ -134,7 +133,7 @@ class ConditionPreview extends React.Component {
     if (len === 0) {
       items = <div>无</div>;
     }
-    if (type === 'user'){
+    if (type === 'user') {
       title = '用户维度';
     }
     return (
@@ -156,7 +155,7 @@ class ConditionPreview extends React.Component {
     return (
       <div>
         {this.showConditionsBlock(conditions, 'basic')}
-        { userConditionsBlock }
+        {userConditionsBlock}
       </div>
     );
   }

@@ -44,11 +44,9 @@ class ConditionNumber extends React.Component {
     const fieldValue = form.getFieldValue(uuid);
     let values = fieldValue;
     if (fieldValue && typeof fieldValue === 'string') {
-        let fieldValues = fieldValue.replace(/\r\n/g, ',').replace(/\n/g, ',');
-        fieldValues = fieldValues.replace(/\s/g, ',').split(',');
-        values = _.remove(fieldValues, function(n) {
-            return n;
-        });
+      let fieldValues = fieldValue.replace(/\r\n/g, ',').replace(/\n/g, ',');
+      fieldValues = fieldValues.replace(/\s/g, ',').split(',');
+      values = _.remove(fieldValues, n => (n));
     }
     onChange({ value: values, uuid });
   }
@@ -81,11 +79,11 @@ class ConditionNumber extends React.Component {
         inputForm = form.getFieldDecorator(uuid, {
           initialValue: value
         })(
-            < Input type="textarea" onBlur={::this.onTextareaChangeProxy} rows={1} />
+          < Input type="textarea" onBlur={::this.onTextareaChangeProxy} rows={1} />
         );
       } else {
         inputForm = form.getFieldDecorator(uuid, {
-            initialValue: value
+          initialValue: value
         })(
           <Select
             style={selectStyle}
@@ -105,7 +103,7 @@ class ConditionNumber extends React.Component {
       inputForm = form.getFieldDecorator(uuid, {
         initialValue: value
       })(
-        <Input onBlur={::this.onChangeProxy} / >
+        <Input onBlur={::this.onChangeProxy} />
       );
     }
 

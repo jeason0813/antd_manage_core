@@ -41,9 +41,7 @@ class ConditionInput extends React.Component {
     if (fieldValue && typeof fieldValue === 'string') {
       let fieldValues = fieldValue.replace(/\r\n/g, ',').replace(/\n/g, ',');
       fieldValues = fieldValues.replace(/\s/g, ',').split(',');
-      values = _.remove(fieldValues, function(n) {
-        return n;
-      });
+      values = _.remove(fieldValues, n => (n));
     }
     onChange({ value: values, uuid });
   }

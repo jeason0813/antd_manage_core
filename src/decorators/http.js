@@ -6,7 +6,7 @@ import {
   HTTP_PUT,
   HTTP_PATCH,
   HTTP_HEAD,
-  HTTP_OPTIONS,
+  HTTP_OPTIONS
 } from '../constants/http';
 
 const request = (method) => (takeManageToken) => (target, prop, descriptor) => {

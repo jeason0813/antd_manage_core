@@ -22,7 +22,7 @@ export default class Layout extends React.Component {
     })
     .catch(() => {
       this.setState({ toggle: false });
-    })
+    });
   }
 
   boradcastMenuToggle(val) {
@@ -43,15 +43,15 @@ export default class Layout extends React.Component {
     return (
       <div>
         <LoginModal />
-          <Navigation
-            location={location}
-            onToggle={::this.boradcastMenuToggle}
-            toggle={toggle}
-          />
+        <Navigation
+          location={location}
+          onToggle={::this.boradcastMenuToggle}
+          toggle={toggle}
+        />
         <Main children={children} toggle={toggle} />
         <MyTask />
       </div>
     );
   }
 
-};
+}

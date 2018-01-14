@@ -13,6 +13,12 @@ class Navigation extends React.Component {
     toggle: React.PropTypes.bool
   };
 
+  static propTypes = {
+    router: React.PropTypes.object,
+    onToggle: React.PropTypes.func,
+    toggle: React.PropTypes.bool
+  };
+
   state = {
     current: [],
     configs: [],
@@ -20,13 +26,7 @@ class Navigation extends React.Component {
     iconToggle: ''
   };
 
-  componentWillReceiveProps(nextProps) {
-    const { toggle } = nextProps;
-    this.toggleIconType(!toggle);
-  }
-
   componentDidMount() {
-
     this.getNavigation();
 
     DI.get('auth').listenPermissionChange(() => {
@@ -34,6 +34,11 @@ class Navigation extends React.Component {
     });
 
     this.unsubscribed = this.context.router.listen(::this.locationHasChanged);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const { toggle } = nextProps;
+    this.toggleIconType(!toggle);
   }
 
   componentWillUnmount() {
@@ -149,11 +154,11 @@ class Navigation extends React.Component {
     const { toggle } = this.props;
     const navigation = this.parseConfigs(configs);
     return (
-      <aside className={ toggle ? `${styles.container} ${styles.toggle}` : styles.container } >
+      <aside className={toggle ? `${styles.container} ${styles.toggle}` : styles.container} >
         <div className={styles.toggleDiv} onClick={::this.toggleNavigation}>
           <Icon
-            type={ iconToggle ? 'caret-right' : 'caret-left' }
-            className={ iconToggle ? `${styles.toggleIcon} ${styles.toggled}` : styles.toggleIcon}
+            type={iconToggle ? 'caret-right' : 'caret-left'}
+            className={iconToggle ? `${styles.toggleIcon} ${styles.toggled}` : styles.toggleIcon}
           />
         </div>
         <Menu

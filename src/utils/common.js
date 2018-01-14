@@ -8,7 +8,7 @@ export const stringToCamelCase = (string) => (
   string.replace(/[-_][^-_]/g, (match) => match.charAt(1).toUpperCase())
 );
 
-export const stringToUnderlineCase = (s) => s.replace(/([A-Z])/g,"_$1").toLowerCase()
+export const stringToUnderlineCase = (s) => s.replace(/([A-Z])/g, '_$1').toLowerCase();
 
 export const generateUUID = () => {
   let d = new Date().getTime();
@@ -30,8 +30,8 @@ export const currencyFormat = (value, digit = 2) => {
 
 export const percentFormat = (value, digit) => {
   let d = 2;
-  if (_.isNumber(digit)) d = digit
-  return `${ (value * 100).toFixed(d)} %`;
+  if (_.isNumber(digit)) d = digit;
+  return `${(value * 100).toFixed(d)} %`;
 };
 
 export const isBooleanTrue = (value) => (
@@ -155,8 +155,8 @@ export const getColorByNum = (num) => DI.get('COLORS')[num % DI.get('COLORS').le
 export const queryInjectCondition = (query, condition) => {
   // reset value to undefined to prevent caching last condition value
   _.each(condition, (item) => {
-    if(item.operationValue) {
-      item.value = undefined;
+    if (item.operationValue) {
+      Object.assign({}, item, { value: undefined });
     }
   });
 
@@ -165,5 +165,5 @@ export const queryInjectCondition = (query, condition) => {
     if (currentCondition) {
       currentCondition.value = value;
     }
-  })
-}
+  });
+};

@@ -40,7 +40,7 @@ class ConditionDate extends React.Component {
     let dateValue = _.cloneDeep(value);
     if (value) {
       if (subConfig && subConfig.returnUtcSeconds) {
-        dateValue = Math.floor(dateValue.valueOf()/1000);
+        dateValue = Math.floor(dateValue.valueOf() / 1000);
       } else if (subConfig && subConfig.showTime) {
         dateValue = moment(value).format('YYYY-MM-DD HH:mm:ss');
       } else {
@@ -67,7 +67,7 @@ class ConditionDate extends React.Component {
       format = 'YYYY-MM-DD HH:mm:ss';
     }
     if (subConfig && subConfig.returnUtcSeconds && value) {
-      value = value * 1000
+      value = value * 1000;
     }
 
     return (

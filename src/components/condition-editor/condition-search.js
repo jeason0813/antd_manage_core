@@ -101,7 +101,7 @@ class ConditionSearch extends React.Component {
 
     let userConditionsStr = '';
     if (userConditions.length > 1) {
-        userConditionsStr = conditionsToResult(userConditions);
+      userConditionsStr = conditionsToResult(userConditions);
     }
     const type = advancedConditions.length ? 'ConditionEditor' : 'ConditionSearch';
 
@@ -112,7 +112,7 @@ class ConditionSearch extends React.Component {
       onSearch({
         value: {
           conditionResult: emitConditions,
-          userConditionResult:  userConditionsStr,
+          userConditionResult: userConditionsStr,
           conditionQuery: conditionsToQueryString(emitConditions),
           userConditionQuery: conditionsToQueryString(userConditionsStr, true)
         }
@@ -121,13 +121,14 @@ class ConditionSearch extends React.Component {
   }
 
   onUse(e) {
-    const { conditions, type, userConditions} = e.value;
+    const { conditions, type, userConditions } = e.value;
     const { realTime } = this.props;
 
     // stateConditions只会有一层
     if (type === 'ConditionSearch') {
       const stateConditions = this.injectHistoryConditions(conditions, this.state.conditions);
-      const stateUserConditions = this.injectHistoryConditions(userConditions, this.state.userConditions);
+      const stateUserConditions =
+        this.injectHistoryConditions(userConditions, this.state.userConditions);
       this.setConditions(stateConditions, stateUserConditions);
     } else {
       if (this.refs.conditionEditor) {
@@ -173,11 +174,8 @@ class ConditionSearch extends React.Component {
     const conditionsString = this.transformPredicateAndValueString(conditions);
     const userConditionsString = this.transformPredicateAndValueString(userConditions);
 
-    if (
-        (conditions.length === 1 || this.prevConditionsString === conditionsString) &&
-        (userConditions.length === 1 || this.userConditionsString === userConditionsString)
-    )
-    {
+    if ((conditions.length === 1 || this.prevConditionsString === conditionsString)
+      && (userConditions.length === 1 || this.userConditionsString === userConditionsString)) {
       emitCondition = false;
     }
 
@@ -197,8 +195,10 @@ class ConditionSearch extends React.Component {
 
   setInputConditions(inputConditions, inputUserConditions) {
     if (inputConditions && inputUserConditions) {
-      const conditions = arrayToStateConditions(this.parseInputConditions(inputConditions), this, false);
-      const userConditions = arrayToStateConditions(this.parseInputConditions(inputUserConditions), this, true);
+      const conditions =
+        arrayToStateConditions(this.parseInputConditions(inputConditions), this, false);
+      const userConditions =
+        arrayToStateConditions(this.parseInputConditions(inputUserConditions), this, true);
       this.setState({
         conditions,
         userConditions
@@ -208,48 +208,6 @@ class ConditionSearch extends React.Component {
         conditions: arrayToStateConditions(this.parseInputConditions(inputConditions), this, false)
       });
     }
-  }
-
-  // conditions => $lt=3&$gt=4
-  transformPredicateAndValueString(conditions) {
-    const stringItems = [];
-    const lastIndex = conditions.length - 1;
-    _.each(conditions, (condition, index) => {
-      if (valueNotNull(condition) && index < lastIndex) {
-        stringItems.push(`${condition.predicate}=${condition.value}`);
-      }
-    });
-    return stringItems.join('&');
-  }
-
-  parseInputConditions(inputConditions) {
-    let conditions;
-    try {
-      conditions = parseInputConditions(inputConditions);
-      checkInputConditions(conditions, this);
-    } catch (e) {
-      // console.warn('parseInputConditions error: ', e);
-      conditions = [];
-    }
-    return conditions;
-  }
-
-  injectHistoryConditions(conditionHistroy, conditions) {
-    _.each(conditionHistroy, (condition) => {
-      if (valueNotNull(condition)) {
-        const cloneCondition = _.clone(condition);
-        const value = cloneCondition.value;
-        const predicate = cloneCondition.predicate;
-        delete cloneCondition.value;
-        delete cloneCondition.predicate;
-        const stateCondition = _.find(conditions, cloneCondition);
-        if (stateCondition) {
-          stateCondition.value = value;
-          stateCondition.predicate = predicate;
-        }
-      }
-    });
-    return conditions;
   }
 
   getConditionsComponents = (userConditions) => (
@@ -269,23 +227,74 @@ class ConditionSearch extends React.Component {
         </div>
       )
     )
-  )
+  );
+
+  injectHistoryConditions(conditionHistroy, conditions) {
+    _.each(conditionHistroy, (condition) => {
+      if (valueNotNull(condition)) {
+        const cloneCondition = _.clone(condition);
+        const value = cloneCondition.value;
+        const predicate = cloneCondition.predicate;
+        delete cloneCondition.value;
+        delete cloneCondition.predicate;
+        const stateCondition = _.find(conditions, cloneCondition);
+        if (stateCondition) {
+          stateCondition.value = value;
+          stateCondition.predicate = predicate;
+        }
+      }
+    });
+    return conditions;
+  }
+
+  parseInputConditions(inputConditions) {
+    let conditions;
+    try {
+      conditions = parseInputConditions(inputConditions);
+      checkInputConditions(conditions, this);
+    } catch (e) {
+      // console.warn('parseInputConditions error: ', e);
+      conditions = [];
+    }
+    return conditions;
+  }
+
+  // conditions => $lt=3&$gt=4
+  transformPredicateAndValueString(conditions) {
+    const stringItems = [];
+    const lastIndex = conditions.length - 1;
+    _.each(conditions, (condition, index) => {
+      if (valueNotNull(condition) && index < lastIndex) {
+        stringItems.push(`${condition.predicate}=${condition.value}`);
+      }
+    });
+    return stringItems.join('&');
+  }
 
   render() {
-    const { conditions, visible, advancedConditions, userConditions, userSectionToggle } = this.state;
-    const { fieldConfigs, userFieldConfigs, shortcutConfigs, actionConfigs, name, realTime, advanced } = this.props;
+    const {
+      conditions, visible, advancedConditions, userConditions, userSectionToggle
+    } = this.state;
+    const {
+      fieldConfigs, userFieldConfigs, shortcutConfigs, actionConfigs, name, realTime, advanced
+    } = this.props;
     const conditionEditorWidth = '80%';
-    let components, userConditionsComponents, searchInputCoponent;
-    let toggleIcon, userSectionClassName;
+    let components;
+    let userConditionsComponents;
+    let searchInputCoponent;
+    let toggleIcon;
+    let userSectionClassName;
     if (userSectionToggle) {
-      toggleIcon = <Icon
-          type="up-circle-o"
-          className={`${styles.toggleIcon} ${styles.toggleIconActive}`}
-          onClick={::this.onToggleIcon}
-      />;
+      toggleIcon = (<Icon
+        type="up-circle-o"
+        className={`${styles.toggleIcon} ${styles.toggleIconActive}`}
+        onClick={::this.onToggleIcon}
+      />);
       userSectionClassName = '';
     } else {
-      toggleIcon = <Icon type="down-circle-o" className={styles.toggleIcon}  onClick={::this.onToggleIcon} />;
+      toggleIcon = (
+        <Icon type="down-circle-o" className={styles.toggleIcon} onClick={::this.onToggleIcon} />
+      );
       userSectionClassName = styles.userSearchToggle;
     }
     if (advancedConditions.length) {

@@ -1,7 +1,5 @@
 import React from 'react';
-import { Modal, Icon, Transfer, Button, message } from 'antd';
-import _ from 'lodash';
-import GoogleMaterialIcon from '../google-material-icon/google-material-icon';
+import { Modal } from 'antd';
 import Table from '../table/table';
 import DI from '../../di';
 import { humanizeByColorName } from '../../utils/common';
@@ -93,7 +91,7 @@ export default class MyTask extends React.Component {
             <a onClick={() => this.onDownload(record)} >
               下载
             </a>
-          )
+          );
         }
         return null;
       }

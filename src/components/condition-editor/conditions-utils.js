@@ -135,8 +135,6 @@ export const optimizeConditions = (conditions) => {
   return conditions;
 };
 
-
-
 export const generateConditionSelect = (editor, type) => (
   ({
     uuid: generateUUID(),
@@ -144,7 +142,8 @@ export const generateConditionSelect = (editor, type) => (
     onChange: (event) => {
       const { conditions, userConditions } = editor.state;
       const { uuid, value } = event;
-      const conditionSelect = getConditionSelect(uuid, conditions) || getConditionSelect(uuid, userConditions);
+      const conditionSelect =
+        getConditionSelect(uuid, conditions) || getConditionSelect(uuid, userConditions);
       conditionSelect.value = value;
       editor.setConditions(conditions);
     }
@@ -187,9 +186,9 @@ export const getCondition = (uuid, conditions) => {
   return null;
 };
 
-export const capitalizeFirstLetter = (string)  => {
-  return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
-};
+export const capitalizeFirstLetter = (string) => (
+  string.charAt(0).toUpperCase() + string.slice(1).toLowerCase()
+);
 
 export const generateConditionByKey = (key, editor, type, isUserCondition) => {
   let configs = editor.props[`${type}Configs`];
@@ -255,7 +254,8 @@ export const generateConditionByKey = (key, editor, type, isUserCondition) => {
 };
 
 export const objectToCondition = (object, editor, isUserCondition) => {
-  const condition = generateConditionByKey(object.operationValue, editor, object.operation, isUserCondition);
+  const condition =
+    generateConditionByKey(object.operationValue, editor, object.operation, isUserCondition);
   if (condition) {
     condition.value = object.value;
     condition.predicate = object.predicate;

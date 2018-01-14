@@ -87,7 +87,7 @@ export default class TableToExcel extends React.Component {
             任务 "{this.state.title}" 创建成功，可在 <a onClick={::this.onTaskShow} >我的任务中</a> 查看进度
           </div>
         )
-      })
+      });
       this.setState({
         exporting: false
       }, () => {
@@ -151,7 +151,7 @@ export default class TableToExcel extends React.Component {
         <div className={styles.error} >
           暂无数据导出
         </div>
-      )
+      );
     }
 
     if (this.props.total > this.props.limit) {
@@ -159,7 +159,7 @@ export default class TableToExcel extends React.Component {
         <div className={styles.error} >
           导出的数据超出最大限制 {this.props.limit} 条
         </div>
-      )
+      );
     }
 
     return (

@@ -76,7 +76,7 @@ class InstallAuthenticator extends React.Component {
               overlayClassName={styles['download-qr']}
               placement="bottom"
               title="扫二维码下载"
-              content={<QRCode value={market.downloadUrl}/>}
+              content={<QRCode value={market.downloadUrl} />}
               trigger="hover"
             >
               <a href={market.downloadUrl} target="_blank"> {market.shopName} </a>
