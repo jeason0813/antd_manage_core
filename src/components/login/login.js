@@ -195,9 +195,7 @@ export default class Login extends React.Component {
           {modalTips}
           {showReset && <a className={styles.resetLink} onClick={::this.showReset}>忘记密码?</a>}
         </div>
-        : <Reset
-            showLogin={::this.showLogin}
-          />}
+        : <Reset showLogin={::this.showLogin} />}
       </div>
     );
   }

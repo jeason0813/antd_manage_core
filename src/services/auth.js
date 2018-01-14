@@ -7,7 +7,7 @@ export default class Auth {
   };
 
   constructor() {
-    this.store = DI.get('offlineStorageFactory')(DI.get('config').get('core.auth.storageName'))
+    this.store = DI.get('offlineStorageFactory')(DI.get('config').get('core.auth.storageName'));
   }
 
   isLoggedIn() {
@@ -46,7 +46,7 @@ export default class Auth {
     return this.store.add('permission', permission).then((data) => {
       this.permissionOnChange();
       return data;
-    })
+    });
   }
 
   setKeyVerified(keyStatus) {

@@ -1,23 +1,21 @@
 import _ from 'lodash';
 import DI from '../di';
-import { stringToUnderlineCase, stringToCamelCase } from './common'
-
-export const transformOrder = (sorter) => (
-   `${(sorter.order === 'ascend' ? '' : '-')}${transformSorterField(sorter)}`
-);
+import { stringToUnderlineCase, stringToCamelCase } from './common';
 
 export const transformSorterField = (sorter) => {
-  let {
-    field,
-    column: { sorterType }
-  } = sorter;
+  let { field } = sorter;
+  const { column: { sorterType } } = sorter;
   if (sorterType === 'underline') {
     field = stringToUnderlineCase(field);
   } else if (sorterType === 'camel') {
     field = stringToCamelCase(field);
   }
   return field;
-}
+};
+
+export const transformOrder = (sorter) => (
+  `${(sorter.order === 'ascend' ? '' : '-')}${transformSorterField(sorter)}`
+);
 
 // @todo filters
 export const generateQuery = ({ pagination = {}, sorter } = {}) => {

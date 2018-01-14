@@ -50,23 +50,6 @@ class Table extends React.Component {
     dataLoadErrorMessage: '数据加载失败,点击重新更新...'
   };
 
-  init() {
-    const { tableColumnManageConfigs } = this.props;
-    const { name } = tableColumnManageConfigs;
-    return new Promise((resolve, reject) => {
-      this.offlineStorge = new OfflineStorge(
-        DI.get('config').get('core.table.configStorageName'));
-      this.offlineStorge.get(name).then((offlineConfigs) => {
-        this.offlineConfigs = offlineConfigs;
-        if (this.offlineConfigs && this.offlineConfigs.pageSize) {
-          this.setState({ query: generateQuery({ pagination: { pageSize: this.offlineConfigs.pageSize } }) }, resolve);
-        } else {
-          resolve();
-        }
-      });
-    })
-  }
-
   componentDidMount() {
     this.init().then(() => {
       if (!this.props.conditionSearch) {
@@ -86,7 +69,8 @@ class Table extends React.Component {
       const { query } = this.state;
       query.offset = 0;
 
-      const conditionQuery = this.generateConditionQueryString(e.value.conditionQuery, e.value.conditionResult);
+      const conditionQuery =
+        this.generateConditionQueryString(e.value.conditionQuery, e.value.conditionResult);
       const userConditionQuery = this.generateConditionQueryString(
         e.value.userConditionQuery,
         e.value.userConditionResult,
@@ -110,6 +94,25 @@ class Table extends React.Component {
         this.fetchData();
       })
       .catch(() => message.success('删除失败'));
+  }
+
+  init() {
+    const { tableColumnManageConfigs } = this.props;
+    const { name } = tableColumnManageConfigs;
+    return new Promise((resolve, reject) => {
+      this.offlineStorge = new OfflineStorge(
+        DI.get('config').get('core.table.configStorageName'));
+      this.offlineStorge.get(name).then((offlineConfigs) => {
+        this.offlineConfigs = offlineConfigs;
+        if (this.offlineConfigs && this.offlineConfigs.pageSize) {
+          this.setState({
+            query: generateQuery({ pagination: { pageSize: this.offlineConfigs.pageSize } })
+          }, resolve);
+        } else {
+          resolve();
+        }
+      });
+    });
   }
 
   generateQueryString(conditionQuery, userConditionQuery) {
@@ -238,7 +241,7 @@ class Table extends React.Component {
         />
         {tableToExcelComponent}
         <a className={styles.reload} onClick={() => this.fetchData()}>
-          <Icon type="reload"/>
+          <Icon type="reload" />
         </a>
       </div>
     );

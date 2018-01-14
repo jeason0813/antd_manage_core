@@ -5,7 +5,7 @@ import NavigationSearch from '../navigation-search/navigation-search';
 import styles from './header.styl';
 
 const Header = ({ toggle }) => (
-  <header className={ toggle ? `${styles.container} ${styles.toggle}`: styles.container} >
+  <header className={toggle ? `${styles.container} ${styles.toggle}` : styles.container} >
     <Breadcrumb />
     <AccountInfo />
     <NavigationSearch />

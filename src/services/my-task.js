@@ -19,7 +19,7 @@ export default class MyTask {
     this.taskComponent = component;
   }
 
-  download(record){
+  download(record) {
     DI.get('excelHttp')
     .get(record.mq_id)
     .then((url) => {

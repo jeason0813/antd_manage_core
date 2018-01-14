@@ -57,7 +57,7 @@ export default class Reset extends React.Component {
       .catch((err) => {
         message.error(err.message);
         this.setState({ sending: false });
-      })
+      });
   }
 
   handleSubmit(e) {
@@ -75,7 +75,7 @@ export default class Reset extends React.Component {
           .catch((err) => {
             message.error(err.message);
             this.setState({ loading: false });
-          })
+          });
       }
     });
   }

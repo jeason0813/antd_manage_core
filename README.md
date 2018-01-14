@@ -1,6 +1,9 @@
 # antd_manage_core
 
 # ChangeLog
+### v1.1.35
+* 大范围修复项目Eslint报错
+
 ### v1.1.34
 * 修复图片上传bug
 

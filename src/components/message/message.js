@@ -8,7 +8,7 @@ export default {
     return message.success(content, duration, onClose);
   },
   error(content, duration, onClose) {
-    return message.error(content, duration = 10, onClose);
+    return message.error(content, 10, onClose);
   },
   warning(content, duration, onClose) {
     return message.warning(content, duration, onClose);

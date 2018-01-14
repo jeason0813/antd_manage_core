@@ -6,7 +6,7 @@ import styles from './main.styl';
 function Main({ children, toggle }) {
   return (
     <section
-      className={ toggle ? `${styles.container} ${styles.toggle}` : styles.container}
+      className={toggle ? `${styles.container} ${styles.toggle}` : styles.container}
     >
       <Header toggle={toggle} />
       <div className={styles.children} >

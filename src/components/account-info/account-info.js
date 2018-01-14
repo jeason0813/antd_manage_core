@@ -61,7 +61,7 @@ export default class AccountInfo extends React.Component {
     });
   }
 
-  onTaskShow(){
+  onTaskShow() {
     DI.get('myTask').show();
   }
 
@@ -73,7 +73,7 @@ export default class AccountInfo extends React.Component {
         })
         .catch(() => {
           message.error('同步权限失败');
-        })
+        });
     });
   }
 
