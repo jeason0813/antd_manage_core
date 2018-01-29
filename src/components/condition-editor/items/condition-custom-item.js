@@ -37,7 +37,7 @@ class ConditionCustomItem extends React.Component {
 
   render() {
     const { text, predicate, predicateOnChange, uuid } = this.props;
-    const customRender = this.state.render;
+    const customRender = this.props.render;
 
     return (
       <Form layout={'inline'} >

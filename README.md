@@ -1,6 +1,9 @@
 # antd_manage_core
 
 # ChangeLog
+### v1.1.36
+* 修复高级搜索条件树定制item
+
 ### v1.1.35
 * 大范围修复项目Eslint报错
 
