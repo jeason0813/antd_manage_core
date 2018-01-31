@@ -30,7 +30,7 @@ export default class Editor extends React.Component {
 
   state = { loading: true, value: '' };
 
-  componentDidMount() {
+  componentWillMount() {
     if (!window.UE) {
       this.loadEditor();
     } else {

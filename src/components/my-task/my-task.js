@@ -11,7 +11,7 @@ export default class MyTask extends React.Component {
     visible: false
   }
 
-  componentDidMount() {
+  componentWillMount() {
     DI.get('myTask').setTaskComponent(this);
     if (!this.intervalId) {
       this.intervalId = setInterval(() => {

@@ -51,7 +51,7 @@ class Table extends React.Component {
     dataLoadErrorMessage: '数据加载失败,点击重新更新...'
   };
 
-  componentDidMount() {
+  componentWillMount() {
     this.init().then(() => {
       if (!this.props.conditionSearch) {
         this.fetchData();

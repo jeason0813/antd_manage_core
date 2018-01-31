@@ -15,7 +15,7 @@ class Verify extends React.Component {
     verifyLoading: false
   };
 
-  componentDidMount() {
+  componentWillMount() {
     this.refs.code.refs.input.focus();
   }
 
