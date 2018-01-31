@@ -18,7 +18,7 @@ class Birthday extends React.Component {
     year: moment().format('YYYY')
   };
 
-  componentDidMount() {
+  componentWillMount() {
     const { account } = this.props;
     DI.get('commonOfflineStorage').get(Birthday.BRITHDAY_YEAR_STORE_KEY)
       .then((year) => {

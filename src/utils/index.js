@@ -1,3 +1,3 @@
 export * from './ant-table';
 export * from './common';
-export * from './pattern';
+export * as Pattern from './pattern';

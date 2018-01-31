@@ -20,7 +20,7 @@ class TableColumnManage extends React.Component {
     offlineConfigs: {}
   };
 
-  componentDidMount() {
+  componentWillMount() {
     const { name, columns } = this.props;
     this.offlineStorge = new OfflineStorge(
       DI.get('config').get('core.table.columnManageStorageName')
