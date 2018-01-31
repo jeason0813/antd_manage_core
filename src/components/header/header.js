@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Breadcrumb from '../breadcrumb/breadcrumb';
 import AccountInfo from '../account-info/account-info';
 import NavigationSearch from '../navigation-search/navigation-search';
@@ -13,7 +14,7 @@ const Header = ({ toggle }) => (
 );
 
 Header.propTypes = {
-  toggle: React.PropTypes.bool
+  toggle: PropTypes.bool
 };
 
 export default Header;

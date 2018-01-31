@@ -1,13 +1,14 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { injectItemComponent } from '../conditions-utils';
 import styles from './condition-tree-item.styl';
 
 class ConditionTreeItem extends React.Component {
 
   static propTypes = {
-    condition: React.PropTypes.object,
-    path: React.PropTypes.string,
-    conditionSortableRef: React.PropTypes.func
+    condition: PropTypes.object,
+    path: PropTypes.string,
+    conditionSortableRef: PropTypes.func
   };
 
   render() {

@@ -1,10 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from './json-preview.styl';
 
 export default class JSONPreview extends React.Component {
   static propTypes = {
-    jsonString: React.PropTypes.string,
-    json: React.PropTypes.object
+    jsonString: PropTypes.string,
+    json: PropTypes.object
   };
 
   getInnerContent(content) {

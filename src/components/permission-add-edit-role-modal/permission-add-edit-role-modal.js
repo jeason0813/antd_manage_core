@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import DI from '../../di';
 import { Modal, Form, Input, Button, message } from 'antd';
 const FormItem = Form.Item;
@@ -6,11 +7,11 @@ const FormItem = Form.Item;
 @Form.create()
 export default class PermissionAddEditRoleModal extends React.Component {
   static propTypes = {
-    form: React.PropTypes.object,
-    originData: React.PropTypes.object,
-    visible: React.PropTypes.bool,
-    roleId: React.PropTypes.number,
-    handleClose: React.PropTypes.func
+    form: PropTypes.object,
+    originData: PropTypes.object,
+    visible: PropTypes.bool,
+    roleId: PropTypes.number,
+    handleClose: PropTypes.func
   }
 
   componentWillMount() {

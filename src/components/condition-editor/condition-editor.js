@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Sortable from 'sortablejs';
 import ConditionTree from './blocks/condition-tree';
 import ConditionPanel from './blocks/condition-panel';
@@ -37,12 +38,12 @@ class ConditionEditor extends React.Component {
   };
 
   static propTypes = {
-    fieldConfigs: React.PropTypes.object,
-    actionConfigs: React.PropTypes.object,
-    shortcutConfigs: React.PropTypes.any,
-    onConditionsChange: React.PropTypes.func,
-    conditions: React.PropTypes.any,
-    name: React.PropTypes.string
+    fieldConfigs: PropTypes.object,
+    actionConfigs: PropTypes.object,
+    shortcutConfigs: PropTypes.any,
+    onConditionsChange: PropTypes.func,
+    conditions: PropTypes.any,
+    name: PropTypes.string
   };
 
   state = {

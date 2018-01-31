@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import DI from '../../di';
-import { hashHistory } from 'react-router';
+import HashHistory from '../hash-history/hash-history';
 import {
   Form,
   Input,
@@ -21,10 +22,10 @@ export default class Login extends React.Component {
   };
 
   static propTypes = {
-    form: React.PropTypes.object,
-    location: React.PropTypes.object,
-    modal: React.PropTypes.bool,
-    onLoginSuccess: React.PropTypes.func
+    form: PropTypes.object,
+    location: PropTypes.object,
+    modal: PropTypes.bool,
+    onLoginSuccess: PropTypes.func
   };
 
   state = {
@@ -66,7 +67,7 @@ export default class Login extends React.Component {
                 if (location.state && location.state.nextPathname) {
                   nextPathname = location.state.nextPathname;
                 }
-                hashHistory.push(nextPathname);
+                HashHistory.push(nextPathname);
               }
             });
           })

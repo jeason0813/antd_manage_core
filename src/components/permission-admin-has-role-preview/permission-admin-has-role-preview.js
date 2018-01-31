@@ -1,13 +1,14 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Modal, Transfer, message, Spin } from 'antd';
 import _ from 'lodash';
 import DI from '../../di';
 
 export default class PermissionAdminHasRolePreview extends React.Component {
   static propTypes = {
-    adminId: React.PropTypes.number,
-    adminHasRole: React.PropTypes.array,
-    handleClose: React.PropTypes.func
+    adminId: PropTypes.number,
+    adminHasRole: PropTypes.array,
+    handleClose: PropTypes.func
   };
 
   componentWillMount() {

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { conditionsToResult } from '../conditions-utils';
 import copy from 'copy-to-clipboard';
 import { Icon, message } from 'antd';
@@ -7,7 +8,7 @@ import styles from './condition-json.styl';
 class ConditionJson extends React.Component {
 
   static propTypes = {
-    conditions: React.PropTypes.array
+    conditions: PropTypes.array
   };
 
   onCopy() {

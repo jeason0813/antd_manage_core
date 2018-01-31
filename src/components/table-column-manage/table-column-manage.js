@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Button, Modal, Switch, Icon } from 'antd';
 import _ from 'lodash';
 import OfflineStorge from '../../services/offline-storge';
@@ -9,9 +10,9 @@ import DI from '../../di';
 class TableColumnManage extends React.Component {
 
   static propTypes = {
-    columns: React.PropTypes.array,
-    onColumnsChange: React.PropTypes.func,
-    name: React.PropTypes.string
+    columns: PropTypes.array,
+    onColumnsChange: PropTypes.func,
+    name: PropTypes.string
   };
 
   state = {

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import _ from 'lodash';
 import { Input, Form, Button, Icon, Select } from 'antd';
 import ConditionPredicateSelect from './condition-predicate-select';
@@ -11,16 +12,16 @@ const Option = Select.Option;
 class ConditionInput extends React.Component {
 
   static propTypes = {
-    text: React.PropTypes.string,
-    value: React.PropTypes.any,
-    form: React.PropTypes.object,
-    subConfig: React.PropTypes.object,
-    predicate: React.PropTypes.string,
-    uuid: React.PropTypes.string,
-    onChange: React.PropTypes.func,
-    onDelete: React.PropTypes.func,
-    predicateOnChange: React.PropTypes.func,
-    excludePredicates: React.PropTypes.array
+    text: PropTypes.string,
+    value: PropTypes.any,
+    form: PropTypes.object,
+    subConfig: PropTypes.object,
+    predicate: PropTypes.string,
+    uuid: PropTypes.string,
+    onChange: PropTypes.func,
+    onDelete: PropTypes.func,
+    predicateOnChange: PropTypes.func,
+    excludePredicates: PropTypes.array
   };
 
   static defaultExcludePredicates = [];

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Popconfirm, Popover, Form, Input, Button } from 'antd';
 import ConditionPreview from './condition-preview';
 import styles from './condition-tree-extra.styl';
@@ -7,11 +8,11 @@ const FormItem = Form.Item;
 class ConditionTreeExtra extends React.Component {
 
   static propTypes = {
-    conditions: React.PropTypes.array,
-    onClearConditions: React.PropTypes.func,
-    onSaveShortcut: React.PropTypes.func,
-    onOptimizeConditions: React.PropTypes.func,
-    form: React.PropTypes.object
+    conditions: PropTypes.array,
+    onClearConditions: PropTypes.func,
+    onSaveShortcut: PropTypes.func,
+    onOptimizeConditions: PropTypes.func,
+    form: PropTypes.object
   };
 
   onSave(e) {

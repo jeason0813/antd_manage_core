@@ -1,22 +1,23 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Modal } from 'antd';
 import AuthHttp from '../../services/auth-http';
 import Login from './login';
 import DI from '../../di';
 import styles from './login-modal.styl';
-
+import HashHistory from '../../components/hash-history/hash-history';
 
 class LoginModal extends React.Component {
 
   static propTypes = {
-    children: React.PropTypes.element
+    children: PropTypes.element
   };
 
   state = {
     visible: false
   };
 
-  componentDidMount() {
+  componentWillMount() {
     this.checkToken();
     this.intervalId = setInterval(() => {
       this.checkToken();

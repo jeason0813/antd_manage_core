@@ -1,5 +1,6 @@
 import _ from 'lodash';
-import { matchPattern } from 'react-router/lib/PatternUtils';
+import { matchPattern } from '../utils/pattern';
+//import { matchPattern } from 'react-router/lib/PatternUtils';
 import injectable from '../decorators/injectable';
 import propertyInject from '../decorators/property-inject';
 import Permission from './permission';
@@ -108,35 +109,26 @@ export default class Navigation {
     return config.ignoreChild === true;
   }
 
+  formatPath(path) {
+    if (path.charAt(0) !== '/') {
+      return `/${path}`;
+    }
+    return path;
+  }
+
   getChildRoutesAndIndexRoute() {
     return this.getChildRouteConfigs()
       .then((configs) => {
         const routesConfig = {
-          childRoutes: [],
-          indexRoute: null
+          routes: []
         };
         _.each(configs, (config) => {
-          const routeConfig = {};
-          routeConfig.name = config.name;
-          routeConfig.component = config.component;
-          routeConfig.onEnter = (nextState, replace, callback) => (
-            this.authService.isLoggedIn().then((token) => {
-              if (!token) {
-                replace({
-                  pathname: '/login',
-                  state: { nextPathname: nextState.location.pathname }
-                });
-              }
-              callback();
-            })
-          );
-
-          if (config.default) {
-            routesConfig.indexRoute = routeConfig;
-          } else {
-            routeConfig.path = config.path;
-            routesConfig.childRoutes.push(routeConfig);
-          }
+          const routeConfig = {
+            ...config,
+            exact: config.exact || config.ignoreChild,
+            path: this.formatPath(config.path)
+          };
+          routesConfig.routes.push(routeConfig);
         });
 
         return routesConfig;

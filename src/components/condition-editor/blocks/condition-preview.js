@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import _ from 'lodash';
 import moment from 'moment';
 import { PREDICATES, RELATIONS } from '../condition-constants';
@@ -12,9 +13,9 @@ class ConditionPreview extends React.Component {
   };
 
   static propTypes = {
-    conditions: React.PropTypes.array,
-    userConditions: React.PropTypes.array,
-    format: React.PropTypes.bool
+    conditions: PropTypes.array,
+    userConditions: PropTypes.array,
+    format: PropTypes.bool
   };
 
   formatValue(value, values) {

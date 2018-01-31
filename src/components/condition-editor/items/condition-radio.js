@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import _ from 'lodash';
 import { Radio, Form, Button, Icon } from 'antd';
 import ConditionPredicateSelect from './condition-predicate-select';
@@ -21,16 +22,16 @@ const FormItem = Form.Item;
 class ConditionRadio extends React.Component {
 
   static propTypes = {
-    text: React.PropTypes.string,
-    value: React.PropTypes.string,
-    values: React.PropTypes.array,
-    predicate: React.PropTypes.string,
-    form: React.PropTypes.object,
-    uuid: React.PropTypes.string,
-    onChange: React.PropTypes.func,
-    onDelete: React.PropTypes.func,
-    predicateOnChange: React.PropTypes.func,
-    excludePredicates: React.PropTypes.array
+    text: PropTypes.string,
+    value: PropTypes.string,
+    values: PropTypes.array,
+    predicate: PropTypes.string,
+    form: PropTypes.object,
+    uuid: PropTypes.string,
+    onChange: PropTypes.func,
+    onDelete: PropTypes.func,
+    predicateOnChange: PropTypes.func,
+    excludePredicates: PropTypes.array
   };
 
   static defaultExcludePredicates = [

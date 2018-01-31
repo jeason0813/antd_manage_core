@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Modal, Table, Popover } from 'antd';
 import styles from './condition-history.styl';
 import _ from 'lodash';
@@ -22,15 +23,15 @@ export default class ConditionHistory extends React.Component {
   };
 
   static propTypes = {
-    name: React.PropTypes.string,
-    fieldConfigs: React.PropTypes.object,
-    userFieldConfigs: React.PropTypes.object,
-    actionConfigs: React.PropTypes.object,
-    shortcutConfigs: React.PropTypes.any,
-    onUse: React.PropTypes.func,
-    advanced: React.PropTypes.bool,
-    historyOfflineMaxSize: React.PropTypes.number,
-    store: React.PropTypes.object
+    name: PropTypes.string,
+    fieldConfigs: PropTypes.object,
+    userFieldConfigs: PropTypes.object,
+    actionConfigs: PropTypes.object,
+    shortcutConfigs: PropTypes.any,
+    onUse: PropTypes.func,
+    advanced: PropTypes.bool,
+    historyOfflineMaxSize: PropTypes.number,
+    store: PropTypes.object
   };
 
   constructor() {

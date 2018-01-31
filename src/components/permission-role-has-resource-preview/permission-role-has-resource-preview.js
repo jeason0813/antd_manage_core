@@ -1,13 +1,14 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Modal, Transfer, message, Spin, Badge } from 'antd';
 import _ from 'lodash';
 import DI from '../../di';
 
 export default class PermissionRoleHasResourcePreview extends React.Component {
   static propTypes = {
-    roleId: React.PropTypes.number,
-    roleHasResource: React.PropTypes.array,
-    handleClose: React.PropTypes.func
+    roleId: PropTypes.number,
+    roleHasResource: PropTypes.array,
+    handleClose: PropTypes.func
   };
 
   componentWillMount() {

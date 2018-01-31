@@ -1,22 +1,17 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import _ from 'lodash';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import { Menu, Icon } from 'antd';
 import styles from './navigation.styl';
 import DI from '../../di';
+import HashHistory from '../../components/hash-history/hash-history';
 
 class Navigation extends React.Component {
 
-  static contextTypes = {
-    router: React.PropTypes.object,
-    onToggle: React.PropTypes.func,
-    toggle: React.PropTypes.bool
-  };
-
   static propTypes = {
-    router: React.PropTypes.object,
-    onToggle: React.PropTypes.func,
-    toggle: React.PropTypes.bool
+    onToggle: PropTypes.func,
+    toggle: PropTypes.bool
   };
 
   state = {
@@ -33,11 +28,11 @@ class Navigation extends React.Component {
       this.getNavigation();
     });
 
-    this.unsubscribed = this.context.router.listen(::this.locationHasChanged);
+    this.unsubscribed = HashHistory.listen(::this.locationHasChanged);
   }
 
   componentWillReceiveProps(nextProps) {
-    const { toggle } = nextProps;
+    const { toggle, location } = nextProps;
     this.toggleIconType(!toggle);
   }
 
@@ -175,5 +170,9 @@ class Navigation extends React.Component {
   }
 }
 
+Navigation.contextTypes = {
+  ...React.Component.contextTypes,
+  router: PropTypes.object
+};
 
 export default Navigation;

@@ -1,14 +1,20 @@
 import React from 'react';
-import Main from '../main/main';
+import PropTypes from 'prop-types';
+import { Switch, Redirect } from 'react-router-dom';
 import Navigation from '../navigation/navigation';
 import LoginModal from '../login/login-modal';
 import MyTask from '../my-task/my-task';
+import Header from '../header/header';
+import Birthday from '../../components/birthday/birtyday';
+import RouteWithSubRoutes from '../route-with-sub-routes/route-with-sub-routes';
+import HashHistory from '../hash-history/hash-history';
 import DI from '../../di';
+import styles from './layout.styl';
 
 export default class Layout extends React.Component {
 
   static propTypes = {
-    children: React.PropTypes.element
+    routes: PropTypes.array
   };
 
   state = {
@@ -16,13 +22,18 @@ export default class Layout extends React.Component {
   };
 
   componentWillMount() {
-    DI.get('commonOfflineStorage').get('menuToggleStatus')
-    .then((toggle) => {
-      this.setState({ toggle: !!toggle });
-    })
-    .catch(() => {
-      this.setState({ toggle: false });
+    DI.get('auth').getAccount().then((account) => {
+      if (!account || !account.real_name) {
+        HashHistory.push('/login');
+      }
     });
+    DI.get('commonOfflineStorage').get('menuToggleStatus')
+      .then((toggle) => {
+        this.setState({ toggle: !!toggle });
+      })
+      .catch(() => {
+        this.setState({ toggle: false });
+      });
   }
 
   boradcastMenuToggle(val) {
@@ -34,12 +45,25 @@ export default class Layout extends React.Component {
   }
 
   render() {
-    let { children } = this.props;
+    const { routes } = this.props;
     const { toggle } = this.state;
-    let location = {};
-    if (children) {
-      location = children.props.location;
-    }
+    const main = (
+      <section
+        className={toggle ? `${styles.container} ${styles.toggle}` : styles.container}
+      >
+        <Header toggle={toggle} />
+        <div className={styles.children} >
+          <Switch>
+            {routes.map((route, i) => (
+              <RouteWithSubRoutes key={i} {...route} />
+            ))}
+            <Redirect path="*" to="/404" />
+          </Switch>
+        </div>
+        <Birthday />
+      </section>
+    );
+
     return (
       <div>
         <LoginModal />
@@ -48,7 +72,7 @@ export default class Layout extends React.Component {
           onToggle={::this.boradcastMenuToggle}
           toggle={toggle}
         />
-        <Main children={children} toggle={toggle} />
+        {main}
         <MyTask />
       </div>
     );

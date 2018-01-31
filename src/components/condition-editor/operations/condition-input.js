@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Form, Input, Button, Row, Col } from 'antd';
 import { parseInputConditions } from '../conditions-utils';
 
@@ -7,9 +8,9 @@ const FormItem = Form.Item;
 class ConditionInput extends React.Component {
 
   static propTypes = {
-    onInputConditions: React.PropTypes.func,
-    onCheckInput: React.PropTypes.func,
-    form: React.PropTypes.object
+    onInputConditions: PropTypes.func,
+    onCheckInput: PropTypes.func,
+    form: PropTypes.object
   };
 
   handleSubmit(evt) {

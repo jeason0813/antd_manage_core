@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import DI from '../../di';
-import { hashHistory } from 'react-router';
+import { hashHistory } from 'react-router-dom';
 import {
   Form,
   Input,
@@ -14,8 +15,8 @@ const FormItem = Form.Item;
 export default class Reset extends React.Component {
 
   static propTypes = {
-    form: React.PropTypes.object,
-    showLogin: React.PropTypes.func
+    form: PropTypes.object,
+    showLogin: PropTypes.func
   };
 
   state = {

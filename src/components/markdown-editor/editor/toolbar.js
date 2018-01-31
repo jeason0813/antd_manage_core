@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Upload, message } from 'antd';
 import _ from 'lodash';
 import ToolBarTemp from './toolbar-template';
@@ -7,12 +8,12 @@ import styles from '../markdown-editor.styl';
 
 export default class ToolBar extends React.Component {
   static propTypes = {
-    disabledTools: React.PropTypes.array,
-    markdownTrigger: React.PropTypes.func,
-    injectTrigger: React.PropTypes.func,
-    showLoading: React.PropTypes.func,
-    hideLoading: React.PropTypes.func,
-    qiniuToken: React.PropTypes.object
+    disabledTools: PropTypes.array,
+    markdownTrigger: PropTypes.func,
+    injectTrigger: PropTypes.func,
+    showLoading: PropTypes.func,
+    hideLoading: PropTypes.func,
+    qiniuToken: PropTypes.object
   };
 
   static defaultProps = {

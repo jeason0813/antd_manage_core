@@ -1,6 +1,7 @@
 import React from 'react';
-import { hashHistory } from 'react-router';
+import PropTypes from 'prop-types';
 import DI from '../../di';
+import HashHistory from '../hash-history/hash-history';
 import { Menu, Dropdown, Icon, Modal, message } from 'antd';
 import AccountSetting from '../account-setting/account-setting';
 import GoogleMaterialIcon from '../../components/google-material-icon/google-material-icon';
@@ -20,6 +21,9 @@ export default class AccountInfo extends React.Component {
     const { visible } = this.state;
 
     DI.get('auth').getAccount().then((account) => {
+      if (!account || !account.real_name) {
+        HashHistory.push('/login');
+      }
       this.setState({
         account
       });
@@ -80,7 +84,7 @@ export default class AccountInfo extends React.Component {
   logout() {
     const doClearAndDispatch = () => {
       DI.get('auth').clear().then(() => {
-        hashHistory.push('/login');
+        HashHistory.push('/login');
       });
     };
     DI.get('authHttp')
@@ -123,7 +127,7 @@ export default class AccountInfo extends React.Component {
       <div className={styles.container} >
         <Dropdown overlay={menu} >
           <a className="ant-dropdown-link" >
-            {account.real_name} <Icon type="down" />
+            {account ? account.real_name : ''} <Icon type="down" />
           </a>
         </Dropdown>
         <Modal

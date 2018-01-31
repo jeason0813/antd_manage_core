@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import DI from '../../di';
 import { Icon, Modal, Form, Input, Button, message } from 'antd';
 import _ from 'lodash';
@@ -7,8 +8,8 @@ const FormItem = Form.Item;
 @Form.create()
 export default class PermissionAddAdminModal extends React.Component {
   static propTypes = {
-    form: React.PropTypes.object,
-    originData: React.PropTypes.object
+    form: PropTypes.object,
+    originData: PropTypes.object
   };
 
   componentWillMount() {

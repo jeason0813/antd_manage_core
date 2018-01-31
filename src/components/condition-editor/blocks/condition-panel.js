@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Tabs, Card } from 'antd';
 import ConditionOperation from './../operations/condition-operation';
 import ConditionInput from './../operations/condition-input';
@@ -66,13 +67,13 @@ const ConditionPanel = ({
 
 
 ConditionPanel.propTypes = {
-  conditions: React.PropTypes.array,
-  shortcutConfigs: React.PropTypes.object,
-  actionConfigs: React.PropTypes.object,
-  fieldConfigs: React.PropTypes.object,
-  onInputConditions: React.PropTypes.func,
-  onCheckInput: React.PropTypes.func,
-  onRemoveShortcut: React.PropTypes.func
+  conditions: PropTypes.array,
+  shortcutConfigs: PropTypes.object,
+  actionConfigs: PropTypes.object,
+  fieldConfigs: PropTypes.object,
+  onInputConditions: PropTypes.func,
+  onCheckInput: PropTypes.func,
+  onRemoveShortcut: PropTypes.func
 };
 
 export default ConditionPanel;

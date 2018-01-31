@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Select, Form } from 'antd';
 import { $AND, $OR } from '../condition-constants';
 import styles from './condition-relation-select.styl';
@@ -8,10 +9,10 @@ const Option = Select.Option;
 class ConditionRelationSelect extends React.Component {
 
   static propTypes = {
-    value: React.PropTypes.string,
-    uuid: React.PropTypes.string,
-    onChange: React.PropTypes.func,
-    form: React.PropTypes.object
+    value: PropTypes.string,
+    uuid: PropTypes.string,
+    onChange: PropTypes.func,
+    form: PropTypes.object
   };
 
   onChangeProxy(value) {

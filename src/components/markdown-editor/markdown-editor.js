@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import _ from 'lodash';
 import marked from 'marked';
 import { Spin } from 'antd';
@@ -9,11 +10,11 @@ import styles from './markdown-editor.styl';
 
 export default class MarkdownEditor extends React.Component {
   static propTypes = {
-    onChange: React.PropTypes.func,
-    value: React.PropTypes.string,
-    placeholder: React.PropTypes.string,
-    disabledTools: React.PropTypes.array,
-    qiniuToken: React.PropTypes.object
+    onChange: PropTypes.func,
+    value: PropTypes.string,
+    placeholder: PropTypes.string,
+    disabledTools: PropTypes.array,
+    qiniuToken: PropTypes.object
   };
 
   state = { value: '', preview: '', showPreview: false, loading: false };
