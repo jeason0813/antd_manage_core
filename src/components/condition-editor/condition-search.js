@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Row, Button, Card, Modal, Col, Icon } from 'antd';
 import {
   checkInputConditions,
@@ -33,16 +34,16 @@ class ConditionSearch extends React.Component {
   };
 
   static propTypes = {
-    fieldConfigs: React.PropTypes.object,
-    userFieldConfigs: React.PropTypes.object,
-    actionConfigs: React.PropTypes.object,
-    shortcutConfigs: React.PropTypes.any,
-    onSearch: React.PropTypes.func,
-    conditions: React.PropTypes.any,
-    userConditions: React.PropTypes.any,
-    name: React.PropTypes.string,
-    realTime: React.PropTypes.bool,
-    advanced: React.PropTypes.bool
+    fieldConfigs: PropTypes.object,
+    userFieldConfigs: PropTypes.object,
+    actionConfigs: PropTypes.object,
+    shortcutConfigs: PropTypes.any,
+    onSearch: PropTypes.func,
+    conditions: PropTypes.any,
+    userConditions: PropTypes.any,
+    name: PropTypes.string,
+    realTime: PropTypes.bool,
+    advanced: PropTypes.bool
   };
 
   state = {

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import _ from 'lodash';
 import { Collapse, Tooltip, Icon, Popconfirm } from 'antd';
 import { groupBy } from '../conditions-utils';
@@ -10,10 +11,10 @@ const Panel = Collapse.Panel;
 class ConditionOperation extends React.Component {
 
   static propTypes = {
-    fieldSortableRef: React.PropTypes.func,
-    configs: React.PropTypes.object,
-    type: React.PropTypes.string,
-    onRemoveShortcut: React.PropTypes.func
+    fieldSortableRef: PropTypes.func,
+    configs: PropTypes.object,
+    type: PropTypes.string,
+    onRemoveShortcut: PropTypes.func
   };
 
   onHelpMouseDown(e) {

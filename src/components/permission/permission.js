@@ -1,11 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import DI from '../../di';
 import styles from './permission.styl';
 
 export default class Permission extends React.Component {
   static propTypes = {
-    needPermission: React.PropTypes.array,
-    children: React.PropTypes.node.isRequired
+    needPermission: PropTypes.array,
+    children: PropTypes.node.isRequired
   };
 
   state = { showChildren: false };
@@ -37,9 +38,7 @@ export default class Permission extends React.Component {
     if (this.state.showChildren) {
       children = this.props.children;
     }
-    return (
-      <permission>{children}</permission>
-    );
+    return children;
   }
 }
 

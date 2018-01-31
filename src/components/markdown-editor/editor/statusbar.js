@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from '../markdown-editor.styl';
 
 const StatusBar = ({ value }) => {
@@ -18,7 +19,7 @@ const StatusBar = ({ value }) => {
 };
 
 StatusBar.propTypes = {
-  value: React.PropTypes.string
+  value: PropTypes.string
 };
 
 export default StatusBar;

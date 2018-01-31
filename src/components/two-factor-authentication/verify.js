@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from './verify.styl';
 import { Button, Input, message } from 'antd';
 import DI from '../../di';
@@ -6,15 +7,15 @@ import DI from '../../di';
 class Verify extends React.Component {
 
   static propTypes = {
-    onPrev: React.PropTypes.func,
-    onVerifySuccess: React.PropTypes.func
+    onPrev: PropTypes.func,
+    onVerifySuccess: PropTypes.func
   };
 
   state = {
     verifyLoading: false
   };
 
-  componentDidMount() {
+  componentWillMount() {
     this.refs.code.refs.input.focus();
   }
 

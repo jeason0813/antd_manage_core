@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import DI from '../../di';
 import { Popover, Button } from 'antd';
 import QRCode from 'qrcode.react';
@@ -20,9 +21,9 @@ const markets = {
 class InstallAuthenticator extends React.Component {
 
   static propTypes = {
-    mobileSystem: React.PropTypes.string,
-    onPrev: React.PropTypes.func,
-    onNext: React.PropTypes.func
+    mobileSystem: PropTypes.string,
+    onPrev: PropTypes.func,
+    onNext: PropTypes.func
   };
 
   state = {

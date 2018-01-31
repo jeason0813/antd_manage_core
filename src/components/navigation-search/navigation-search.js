@@ -1,8 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Select } from 'antd';
 import DI from '../../di';
+import HashHistory from '../../components/hash-history/hash-history';
 import _ from 'lodash';
-import { hashHistory } from 'react-router';
 import styles from './navigation-search.styl';
 
 const { Option, OptGroup } = Select;
@@ -56,7 +57,7 @@ export default class NavigationSearch extends React.Component {
   }
 
   handleChange(value) {
-    hashHistory.push(value);
+    HashHistory.push(value);
   }
 
   render() {

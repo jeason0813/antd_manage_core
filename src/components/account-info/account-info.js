@@ -1,6 +1,7 @@
 import React from 'react';
-import { hashHistory } from 'react-router';
+import PropTypes from 'prop-types';
 import DI from '../../di';
+import HashHistory from '../hash-history/hash-history';
 import { Menu, Dropdown, Icon, Modal, message } from 'antd';
 import AccountSetting from '../account-setting/account-setting';
 import GoogleMaterialIcon from '../../components/google-material-icon/google-material-icon';
@@ -9,8 +10,11 @@ import styles from './account-info.styl';
 
 export default class AccountInfo extends React.Component {
 
+  static propTypes = {
+    account: PropTypes.object
+  };
+
   state = {
-    account: [],
     visible: false,
     intervalId: null,
     taskVisible: false
@@ -18,12 +22,6 @@ export default class AccountInfo extends React.Component {
 
   componentWillMount() {
     const { visible } = this.state;
-
-    DI.get('auth').getAccount().then((account) => {
-      this.setState({
-        account
-      });
-    });
 
     const twoFactorAuthenticationConfig = DI.get('config')
       .get('core.auth.twoFactorAuthentication');
@@ -80,7 +78,7 @@ export default class AccountInfo extends React.Component {
   logout() {
     const doClearAndDispatch = () => {
       DI.get('auth').clear().then(() => {
-        hashHistory.push('/login');
+        HashHistory.push('/login');
       });
     };
     DI.get('authHttp')
@@ -90,7 +88,8 @@ export default class AccountInfo extends React.Component {
   }
 
   render() {
-    const { account, visible } = this.state;
+    const { account } = this.props;
+    const { visible } = this.state;
     const MenuItem = Menu.Item;
     const menu = (
       <Menu className={styles.menu} >
@@ -123,7 +122,7 @@ export default class AccountInfo extends React.Component {
       <div className={styles.container} >
         <Dropdown overlay={menu} >
           <a className="ant-dropdown-link" >
-            {account.real_name} <Icon type="down" />
+            {account ? account.real_name : ''} <Icon type="down" />
           </a>
         </Dropdown>
         <Modal

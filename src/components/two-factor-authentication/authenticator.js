@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from './two-factor-authentication.styl';
 import SelectMobileSystem from './select-mobile-system';
 import Verify from './verify';
@@ -7,7 +8,7 @@ import InstallAuthenticator from './install-authenticator';
 class Authenticator extends React.Component {
 
   static propTypes = {
-    onVerifySuccess: React.PropTypes.func
+    onVerifySuccess: PropTypes.func
   };
 
   state = {

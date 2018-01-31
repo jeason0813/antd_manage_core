@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Modal, Icon, Transfer, Button, message, Input, notification } from 'antd';
 import styles from './table-to-excel.styl';
 import _ from 'lodash';
@@ -7,14 +8,14 @@ import DI from '../../di';
 export default class TableToExcel extends React.Component {
 
   static propTypes = {
-    columns: React.PropTypes.array.isRequired,
-    httpService: React.PropTypes.object.isRequired,
-    dataCount: React.PropTypes.number,
-    total: React.PropTypes.number,
-    limit: React.PropTypes.number,
-    queryString: React.PropTypes.string,
-    exportExcelMethodName: React.PropTypes.string,
-    handleExportExcelOptions: React.PropTypes.func
+    columns: PropTypes.array.isRequired,
+    httpService: PropTypes.object.isRequired,
+    dataCount: PropTypes.number,
+    total: PropTypes.number,
+    limit: PropTypes.number,
+    queryString: PropTypes.string,
+    exportExcelMethodName: PropTypes.string,
+    handleExportExcelOptions: PropTypes.func
   };
 
   state = {

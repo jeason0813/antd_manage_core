@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ConditionTreeItem from './condition-tree-item';
 import ConditionRelationSelect from './../items/condition-relation-select';
 import _ from 'lodash';
@@ -7,9 +8,9 @@ import styles from './condition-tree-container.styl';
 class ConditionTreeContainer extends React.Component {
 
   static propTypes = {
-    conditions: React.PropTypes.array,
-    parentPath: React.PropTypes.string,
-    conditionSortableRef: React.PropTypes.func
+    conditions: PropTypes.array,
+    parentPath: PropTypes.string,
+    conditionSortableRef: PropTypes.func
   };
 
   render() {

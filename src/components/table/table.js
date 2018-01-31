@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import antd from 'antd';
 import qs from 'qs';
 import { generatePagination, generateQuery } from '../../utils/ant-table';
@@ -18,25 +19,25 @@ const message = antd.message;
 class Table extends React.Component {
 
   static propTypes = {
-    httpService: React.PropTypes.object,
-    tableColumnManageConfigs: React.PropTypes.object,
-    conditionSearchConfigs: React.PropTypes.object,
-    tableProps: React.PropTypes.object,
-    conditionSearch: React.PropTypes.bool,
-    tableColumnManage: React.PropTypes.bool,
-    formatConditionQuery: React.PropTypes.func,
-    fetchDataMethodName: React.PropTypes.string,
-    deleteMethodName: React.PropTypes.string,
-    qsFormatSearchQuery: React.PropTypes.bool,
-    pageSize: React.PropTypes.number,
-    onDataChange: React.PropTypes.func,
-    handleFetchOptions: React.PropTypes.func,
-    pageSizeChanger: React.PropTypes.bool,
-    formatSorter: React.PropTypes.func,
-    exportExcel: React.PropTypes.bool,
-    exportExcelLimit: React.PropTypes.number,
-    exportExcelMethodName: React.PropTypes.string,
-    handleExportExcelOptions: React.PropTypes.func
+    httpService: PropTypes.object,
+    tableColumnManageConfigs: PropTypes.object,
+    conditionSearchConfigs: PropTypes.object,
+    tableProps: PropTypes.object,
+    conditionSearch: PropTypes.bool,
+    tableColumnManage: PropTypes.bool,
+    formatConditionQuery: PropTypes.func,
+    fetchDataMethodName: PropTypes.string,
+    deleteMethodName: PropTypes.string,
+    qsFormatSearchQuery: PropTypes.bool,
+    pageSize: PropTypes.number,
+    onDataChange: PropTypes.func,
+    handleFetchOptions: PropTypes.func,
+    pageSizeChanger: PropTypes.bool,
+    formatSorter: PropTypes.func,
+    exportExcel: PropTypes.bool,
+    exportExcelLimit: PropTypes.number,
+    exportExcelMethodName: PropTypes.string,
+    handleExportExcelOptions: PropTypes.func
   };
   state = {
     data: [],
@@ -50,7 +51,7 @@ class Table extends React.Component {
     dataLoadErrorMessage: '数据加载失败,点击重新更新...'
   };
 
-  componentDidMount() {
+  componentWillMount() {
     this.init().then(() => {
       if (!this.props.conditionSearch) {
         this.fetchData();

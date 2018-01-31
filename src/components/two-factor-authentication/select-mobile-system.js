@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Icon } from 'antd';
 import styles from './select-mobile-system.styl';
 
@@ -17,7 +18,7 @@ const SelectMobileSystem = ({ onSelectMobileSystem }) => (
 );
 
 SelectMobileSystem.propTypes = {
-  onSelectMobileSystem: React.PropTypes.func
+  onSelectMobileSystem: PropTypes.func
 };
 
 export default SelectMobileSystem;

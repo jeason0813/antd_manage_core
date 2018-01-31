@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Tooltip } from 'antd';
 import GoogleMaterialIcon from '../../components/google-material-icon/google-material-icon';
 
@@ -10,8 +11,8 @@ const TableColumnHelp = ({ title, description }) => (
 );
 
 TableColumnHelp.propTypes = {
-  title: React.PropTypes.string,
-  description: React.PropTypes.string
+  title: PropTypes.string,
+  description: PropTypes.string
 };
 
 export default TableColumnHelp;

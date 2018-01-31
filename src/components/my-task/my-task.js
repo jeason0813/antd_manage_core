@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Modal } from 'antd';
 import Table from '../table/table';
 import DI from '../../di';
@@ -10,7 +11,7 @@ export default class MyTask extends React.Component {
     visible: false
   }
 
-  componentDidMount() {
+  componentWillMount() {
     DI.get('myTask').setTaskComponent(this);
     if (!this.intervalId) {
       this.intervalId = setInterval(() => {

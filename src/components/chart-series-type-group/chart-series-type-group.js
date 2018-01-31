@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import _ from 'lodash';
 import { Button } from 'antd';
 const ButtonGroup = Button.Group;
@@ -40,9 +41,9 @@ const ChartSeriesTypeGroup = ({ value, onChange, className }) => (
 );
 
 ChartSeriesTypeGroup.propTypes = {
-  value: React.PropTypes.string,
-  onChange: React.PropTypes.func,
-  className: React.PropTypes.string
+  value: PropTypes.string,
+  onChange: PropTypes.func,
+  className: PropTypes.string
 };
 
 export default ChartSeriesTypeGroup;

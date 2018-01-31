@@ -1,30 +1,27 @@
 import React from 'react';
-import { Link } from 'react-router';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import Antd from 'antd';
 import _ from 'lodash';
 import DI from '../../di';
 import styles from './breadcrumb.styl';
+import HashHistory from '../../components/hash-history/hash-history';
 
 const AntdBreadcrumb = Antd.Breadcrumb;
 
-export default class Breadcrumb extends React.Component {
-
-  static contextTypes = {
-    router: React.PropTypes.object,
-    history: React.PropTypes.object
-  };
+class Breadcrumb extends React.Component {
 
   static propTypes = {
-    dispatch: React.PropTypes.func,
-    breadcrumb: React.PropTypes.object
+    dispatch: PropTypes.func,
+    breadcrumb: PropTypes.object
   };
 
   state = {
     breadcrumbs: []
   };
 
-  componentDidMount() {
-    this.unsubscribed = this.context.router.listen(::this.locationHasChanged);
+  componentWillMount() {
+    this.unsubscribed = HashHistory.listen(::this.locationHasChanged);
   }
 
   componentWillUnmount() {
@@ -75,3 +72,11 @@ export default class Breadcrumb extends React.Component {
     );
   }
 }
+
+Breadcrumb.contextTypes = {
+  ...React.Component.contextTypes,
+  router: PropTypes.object,
+  history: PropTypes.object
+};
+
+export default Breadcrumb;

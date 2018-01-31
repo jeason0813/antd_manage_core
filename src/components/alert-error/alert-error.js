@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Alert } from 'antd';
 import _ from 'lodash';
 import styles from './alert-error.styl';
@@ -23,15 +24,15 @@ AlertError.propTypes = {
   /**
    * 错误信息
    */
-  message: React.PropTypes.string.isRequired,
+  message: PropTypes.string.isRequired,
   /**
    * 点击Error后触发事件
    */
-  onClick: React.PropTypes.func,
+  onClick: PropTypes.func,
   /**
    * 用于判断是否显示错误信息
    */
-  visible: React.PropTypes.bool
+  visible: PropTypes.bool
 };
 
 AlertError.defaultProps = {

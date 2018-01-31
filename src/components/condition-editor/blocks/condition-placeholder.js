@@ -1,10 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from './condition-placeholder.styl';
 
 class ConditionPlaceholder extends React.Component {
 
   static propTypes = {
-    conditionSortableRef: React.PropTypes.func
+    conditionSortableRef: PropTypes.func
   };
 
   render() {

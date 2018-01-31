@@ -1,13 +1,14 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Tooltip, Icon } from 'antd';
 import styles from '../markdown-editor.styl';
 
 export default class ToolBarTemp extends React.Component {
   static propTypes = {
-    trigger: React.PropTypes.func,
-    icon: React.PropTypes.string,
-    iconActive: React.PropTypes.string,
-    helper: React.PropTypes.string
+    trigger: PropTypes.func,
+    icon: PropTypes.string,
+    iconActive: PropTypes.string,
+    helper: PropTypes.string
   };
 
   state = { active: false };

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import _ from 'lodash';
 import DI from '../../di';
 import message from '../message/message';
@@ -7,11 +8,11 @@ import styles from './editor.styl';
 
 export default class Editor extends React.Component {
   static propTypes = {
-    onChange: React.PropTypes.func,
-    value: React.PropTypes.string,
-    placeholder: React.PropTypes.string,
-    toolbars: React.PropTypes.array,
-    qiniuToken: React.PropTypes.object
+    onChange: PropTypes.func,
+    value: PropTypes.string,
+    placeholder: PropTypes.string,
+    toolbars: PropTypes.array,
+    qiniuToken: PropTypes.object
   };
 
   static defaultProps = {
@@ -29,7 +30,7 @@ export default class Editor extends React.Component {
 
   state = { loading: true, value: '' };
 
-  componentDidMount() {
+  componentWillMount() {
     if (!window.UE) {
       this.loadEditor();
     } else {

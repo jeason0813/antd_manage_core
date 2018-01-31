@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import _ from 'lodash';
 import DI from '../../di';
 import message from '../message/message';
@@ -7,10 +8,10 @@ import styles from './image-uploader.styl';
 
 export default class ImageUploader extends React.Component {
   static propTypes = {
-    value: React.PropTypes.string,
-    onChange: React.PropTypes.func,
-    limit: React.PropTypes.number,
-    qiniuToken: React.PropTypes.object
+    value: PropTypes.string,
+    onChange: PropTypes.func,
+    limit: PropTypes.number,
+    qiniuToken: PropTypes.object
   };
 
   state = { fileList: [], previewImageUrl: '', previewVisible: false };

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Card } from 'antd';
 import ConditionPlaceholder from './condition-placeholder';
 import ConditionTreeContainer from './condition-tree-container';
@@ -8,11 +9,11 @@ import styles from './condition-tree.styl';
 class ConditionTree extends React.Component {
 
   static propTypes = {
-    conditions: React.PropTypes.array,
-    conditionSortableRef: React.PropTypes.func,
-    onClearConditions: React.PropTypes.func,
-    onSaveShortcut: React.PropTypes.func,
-    onOptimizeConditions: React.PropTypes.func
+    conditions: PropTypes.array,
+    conditionSortableRef: PropTypes.func,
+    onClearConditions: PropTypes.func,
+    onSaveShortcut: PropTypes.func,
+    onOptimizeConditions: PropTypes.func
   };
 
   renderConditions(conditions) {

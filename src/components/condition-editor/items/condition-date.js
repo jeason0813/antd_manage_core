@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import _ from 'lodash';
 import { Form, Button, Icon, DatePicker } from 'antd';
 import ConditionPredicateSelect from './condition-predicate-select';
@@ -10,17 +11,17 @@ const FormItem = Form.Item;
 class ConditionDate extends React.Component {
 
   static propTypes = {
-    text: React.PropTypes.string,
-    value: React.PropTypes.any,
-    form: React.PropTypes.object,
-    subConfig: React.PropTypes.object,
-    predicate: React.PropTypes.string,
-    uuid: React.PropTypes.string,
-    onChange: React.PropTypes.func,
-    onDelete: React.PropTypes.func,
-    predicateOnChange: React.PropTypes.func,
-    excludePredicates: React.PropTypes.array,
-    showTime: React.PropTypes.bool
+    text: PropTypes.string,
+    value: PropTypes.any,
+    form: PropTypes.object,
+    subConfig: PropTypes.object,
+    predicate: PropTypes.string,
+    uuid: PropTypes.string,
+    onChange: PropTypes.func,
+    onDelete: PropTypes.func,
+    predicateOnChange: PropTypes.func,
+    excludePredicates: PropTypes.array,
+    showTime: PropTypes.bool
   };
 
   static defaultExcludePredicates = [$LIKE, $IN, $NOT_IN];

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import _ from 'lodash';
 import { Select, Form } from 'antd';
 const Option = Select.Option;
@@ -6,11 +7,11 @@ const Option = Select.Option;
 class ConditionPredicateSelect extends React.Component {
 
   static propTypes = {
-    predicate: React.PropTypes.string,
-    predicates: React.PropTypes.object,
-    form: React.PropTypes.object,
-    predicateOnChange: React.PropTypes.func,
-    uuid: React.PropTypes.string
+    predicate: PropTypes.string,
+    predicates: PropTypes.object,
+    form: PropTypes.object,
+    predicateOnChange: PropTypes.func,
+    uuid: PropTypes.string
   };
 
   predicateOnChangeProxy(value) {
