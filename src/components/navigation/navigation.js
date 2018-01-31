@@ -21,7 +21,7 @@ class Navigation extends React.Component {
     iconToggle: ''
   };
 
-  componentDidMount() {
+  componentWillMount() {
     this.getNavigation();
 
     DI.get('auth').listenPermissionChange(() => {

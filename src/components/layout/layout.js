@@ -18,13 +18,16 @@ export default class Layout extends React.Component {
   };
 
   state = {
-    toggle: undefined
+    toggle: undefined,
+    account: {}
   };
 
   componentWillMount() {
     DI.get('auth').getAccount().then((account) => {
       if (!account || !account.real_name) {
         HashHistory.push('/login');
+      } else {
+        this.setState({ account });
       }
     });
     DI.get('commonOfflineStorage').get('menuToggleStatus')
@@ -46,12 +49,12 @@ export default class Layout extends React.Component {
 
   render() {
     const { routes } = this.props;
-    const { toggle } = this.state;
+    const { toggle, account } = this.state;
     const main = (
       <section
         className={toggle ? `${styles.container} ${styles.toggle}` : styles.container}
       >
-        <Header toggle={toggle} />
+        <Header toggle={toggle} account={account} />
         <div className={styles.children} >
           <Switch>
             {routes.map((route, i) => (
@@ -60,7 +63,9 @@ export default class Layout extends React.Component {
             <Redirect path="*" to="/404" />
           </Switch>
         </div>
-        <Birthday />
+        <Birthday
+          account={account}
+        />
       </section>
     );
 

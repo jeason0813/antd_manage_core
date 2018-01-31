@@ -20,7 +20,7 @@ class Breadcrumb extends React.Component {
     breadcrumbs: []
   };
 
-  componentDidMount() {
+  componentWillMount() {
     this.unsubscribed = HashHistory.listen(::this.locationHasChanged);
   }
 
@@ -80,4 +80,3 @@ Breadcrumb.contextTypes = {
 };
 
 export default Breadcrumb;
-

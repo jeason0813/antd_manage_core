@@ -9,34 +9,37 @@ class Birthday extends React.Component {
 
   static BRITHDAY_YEAR_STORE_KEY = 'prev-birthday-year';
 
+  static propTypes = {
+    account: PropTypes.object
+  };
+
   state = {
     visible: false,
     year: moment().format('YYYY')
   };
 
   componentDidMount() {
-    Promise.all([
-      DI.get('auth').getAccount(),
-      DI.get('commonOfflineStorage').get(Birthday.BRITHDAY_YEAR_STORE_KEY)
-    ]).then(([account, year]) => {
-      const isBirthdayDay = moment().format('MMDD') ===
-        moment(account.birthday).format('MMDD');
-      if (account.birthday && isBirthdayDay && this.state.year !== year) {
-        this.setState({
-          visible: true
-        });
-      }
-    });
+    const { account } = this.props;
+    DI.get('commonOfflineStorage').get(Birthday.BRITHDAY_YEAR_STORE_KEY)
+      .then((year) => {
+        const isBirthdayDay = moment().format('MMDD') ===
+          moment(account.birthday).format('MMDD');
+        if (account.birthday && isBirthdayDay && this.state.year !== year) {
+          this.setState({
+            visible: true
+          });
+        }
+      });
   }
 
   onClose() {
     DI.get('commonOfflineStorage')
-    .add(Birthday.BRITHDAY_YEAR_STORE_KEY, this.state.year)
-    .then(() => {
-      this.setState({
-        visible: false
+      .add(Birthday.BRITHDAY_YEAR_STORE_KEY, this.state.year)
+      .then(() => {
+        this.setState({
+          visible: false
+        });
       });
-    });
   }
 
   render() {
