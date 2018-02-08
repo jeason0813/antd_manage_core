@@ -5,7 +5,7 @@
 * 增加router模块
     * 全局的 HashHistory，控制路由跳转
     * router 路由预处理utils
-    * 通过更严格的 eslint rule `no-unused-vars`
+* 通过更严格的 eslint rule `no-unused-vars`
 
 ### v2.0.0
 * 新版本！
