@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Card, Popover, Popconfirm, message, Alert } from 'antd';
 import Authenticator from './authenticator';
 import ConfigService from '../../services/config';

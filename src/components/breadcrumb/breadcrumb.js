@@ -5,7 +5,7 @@ import Antd from 'antd';
 import _ from 'lodash';
 import DI from '../../di';
 import styles from './breadcrumb.styl';
-import HashHistory from '../../components/hash-history/hash-history';
+import HashHistory from '../../router/hash-history';
 
 const AntdBreadcrumb = Antd.Breadcrumb;
 

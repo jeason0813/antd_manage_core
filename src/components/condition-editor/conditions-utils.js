@@ -1,6 +1,5 @@
 import _ from 'lodash';
 import React from 'react';
-import PropTypes from 'prop-types';
 import { generateUUID } from '../../utils/common';
 import {
   $AND,
@@ -136,7 +135,7 @@ export const optimizeConditions = (conditions) => {
   return conditions;
 };
 
-export const generateConditionSelect = (editor, type) => (
+export const generateConditionSelect = (editor) => (
   ({
     uuid: generateUUID(),
     value: $AND,

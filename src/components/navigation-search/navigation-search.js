@@ -1,8 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Select } from 'antd';
 import DI from '../../di';
-import HashHistory from '../../components/hash-history/hash-history';
+import HashHistory from '../../router/hash-history';
 import _ from 'lodash';
 import styles from './navigation-search.styl';
 

@@ -94,7 +94,7 @@ export default class TableToExcel extends React.Component {
       }, () => {
         this.onCancel();
       });
-    }).catch((e) => {
+    }).catch(() => {
       message.error('导出excel任务创建失败');
       this.setState({
         exporting: false

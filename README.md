@@ -1,12 +1,18 @@
 # antd_manage_core
 
 # ChangeLog
+### v2.0.1
+* 增加router模块
+    * 全局的 HashHistory，控制路由跳转
+    * router 路由预处理utils
+* 通过更严格的 eslint rule `no-unused-vars`
+
 ### v2.0.0
 * 新版本！
     * 支持react升级至v16
     * 支持react-router升级至v4
     * antd升级至v3
-    * 版本向下不兼容，react v15 和 react-router v4请选择1.x版本
+    * 版本向下不兼容，react v15 和 react-router v2 v3 请选择1.x版本
 
 ### v1.1.36
 * 修复高级搜索条件树定制item

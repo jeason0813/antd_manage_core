@@ -72,7 +72,7 @@ class ConditionInput extends React.Component {
     const firstOptionContent = '以下是您已输入的...';
     const firstOptionDisabled = true;
 
-    let inputDisabled = false;
+    let inputDisabled = false;  //eslint-disable-line
     if (predicate === $IS_NOT_NULL || predicate === $IS_NULL) {
       inputDisabled = true;
     }

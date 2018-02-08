@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import DI from '../../di';
 import { Button, Badge, Popover, Tag } from 'antd';
 import _ from 'lodash';

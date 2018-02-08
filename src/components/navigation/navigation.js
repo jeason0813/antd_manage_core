@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { Menu, Icon } from 'antd';
 import styles from './navigation.styl';
 import DI from '../../di';
-import HashHistory from '../../components/hash-history/hash-history';
+import HashHistory from '../../router/hash-history';
 
 class Navigation extends React.Component {
 
@@ -32,7 +32,7 @@ class Navigation extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { toggle, location } = nextProps;
+    const { toggle } = nextProps;
     this.toggleIconType(!toggle);
   }
 
