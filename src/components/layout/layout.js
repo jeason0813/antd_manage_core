@@ -7,7 +7,7 @@ import MyTask from '../my-task/my-task';
 import Header from '../header/header';
 import Birthday from '../../components/birthday/birtyday';
 import RouteWithSubRoutes from '../route-with-sub-routes/route-with-sub-routes';
-import HashHistory from '../hash-history/hash-history';
+import HashHistory from '../../router/hash-history';
 import DI from '../../di';
 import styles from './layout.styl';
 

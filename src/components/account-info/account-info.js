@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import DI from '../../di';
-import HashHistory from '../hash-history/hash-history';
+import HashHistory from '../../router/hash-history';
 import { Menu, Dropdown, Icon, Modal, message } from 'antd';
 import AccountSetting from '../account-setting/account-setting';
 import GoogleMaterialIcon from '../../components/google-material-icon/google-material-icon';

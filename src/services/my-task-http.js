@@ -1,5 +1,5 @@
 import BaseHttp from './base-http';
-import { injectable, httpGet, httpPost } from '../decorators';
+import { injectable } from '../decorators';
 import manageApi from '../decorators/manage-api';
 
 @injectable()

@@ -100,7 +100,7 @@ class Table extends React.Component {
   init() {
     const { tableColumnManageConfigs } = this.props;
     const { name } = tableColumnManageConfigs;
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
       this.offlineStorge = new OfflineStorge(
         DI.get('config').get('core.table.configStorageName'));
       this.offlineStorge.get(name).then((offlineConfigs) => {

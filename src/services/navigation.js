@@ -1,9 +1,9 @@
 import _ from 'lodash';
-import { matchPattern } from '../utils/pattern';
-//import { matchPattern } from 'react-router/lib/PatternUtils';
+import Pattern from '../router/pattern';
 import injectable from '../decorators/injectable';
 import propertyInject from '../decorators/property-inject';
 import Permission from './permission';
+const { formatPattern, matchPattern } = Pattern;
 
 @injectable()
 export default class Navigation {
@@ -109,13 +109,6 @@ export default class Navigation {
     return config.ignoreChild === true;
   }
 
-  formatPath(path) {
-    if (path.charAt(0) !== '/') {
-      return `/${path}`;
-    }
-    return path;
-  }
-
   getChildRoutesAndIndexRoute() {
     return this.getChildRouteConfigs()
       .then((configs) => {
@@ -126,7 +119,7 @@ export default class Navigation {
           const routeConfig = {
             ...config,
             exact: config.exact || config.ignoreChild,
-            path: this.formatPath(config.path)
+            path: formatPattern(config.path)
           };
           routesConfig.routes.push(routeConfig);
         });

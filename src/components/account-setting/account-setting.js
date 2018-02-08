@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import GoogleMaterialIcon from '../../components/google-material-icon/google-material-icon';
 import { Menu } from 'antd';
 import SettingService from '../../services/setting';
