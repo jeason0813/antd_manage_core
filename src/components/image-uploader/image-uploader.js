@@ -66,7 +66,8 @@ export default class ImageUploader extends React.Component {
 
   onFileChange(info) {
     const { bucketUrl } = this.state;
-    const { file, fileList } = info;
+    const { fileList } = info;
+    const file = _.last(fileList.slice(-2));
     const that = this;
 
     if (file && file.status === 'done') {
@@ -127,7 +128,7 @@ export default class ImageUploader extends React.Component {
     );
 
     return (
-      <div>
+      <div className={styles.clearfix}>
         <Upload
           {...uploaderConfig}
         >

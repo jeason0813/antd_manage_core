@@ -85,7 +85,7 @@ class ConditionInput extends React.Component {
         inputForm = form.getFieldDecorator(uuid, {
           initialValue: value
         })(
-          <Input type="textarea" onBlur={::this.onTextareaChangeProxy} rows={1} />
+          <Input.TextArea onBlur={::this.onTextareaChangeProxy} rows={1} />
         );
       } else {
         inputForm = form.getFieldDecorator(uuid, {

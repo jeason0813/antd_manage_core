@@ -1,6 +1,10 @@
 # antd_manage_core
 
 # ChangeLog
+### v2.0.2
+* 修复 antd 升级后 Upload 数据格式改变问题
+* 修复 react 升级后再渲染导致的 Editor 组件问题
+
 ### v2.0.1
 * 增加router模块
     * 全局的 HashHistory，控制路由跳转
