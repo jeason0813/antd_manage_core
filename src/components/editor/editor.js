@@ -75,7 +75,9 @@ export default class Editor extends React.Component {
       autoFloatEnabled: false,
       zIndex: 0
     });
-    this.ue.render(this.id);
+    this.setState({ loading: true }, () => {
+      this.ue.render(this.id);
+    });
     this.ue.ready(() => {
       const { value, placeholder } = this.props;
       if (value) {

@@ -45,7 +45,7 @@ class ConditionInput extends React.Component {
                 validator: ::this.checkInput
               }
             ]
-          })(<Input type="textarea" rows="10" />)}
+          })(<Input.TextArea rows="10" />)}
         </FormItem>
         <Row type="flex" justify="center" >
           <Col>

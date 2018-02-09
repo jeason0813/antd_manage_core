@@ -106,7 +106,7 @@ export default class PermissionAddEditRoleModal extends React.Component {
           >
             {getFieldDecorator('description', {
               initialValue: this.state.roleData.description || ''
-            })(<Input type="textarea" />)}
+            })(<Input.TextArea />)}
           </FormItem>
           <FormItem
             wrapperCol={{ span: 16, offset: 4 }}
