@@ -5,6 +5,18 @@
   }
   .forms {
     .item {
+      :global(.ant-form) {
+        :global(.ant-form-item-label) {
+          line-height 32px;
+          label {
+            font-size 12px;
+          }
+        }
+      }
+
+      :global(.ant-select) {
+        font-size 12px;
+      }
       display: inline-block;
       padding: 0 10px 10px 10px;
       button {
