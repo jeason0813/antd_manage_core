@@ -1,6 +1,9 @@
 # antd_manage_core
 
 # ChangeLog
+### v2.0.3
+* 部分style修改
+
 ### v2.0.2
 * 修复 antd 升级后 Upload 数据格式改变问题
 * 修复 react 升级后再渲染导致的 Editor 组件问题
