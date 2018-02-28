@@ -1,6 +1,9 @@
 # antd_manage_core
 
 # ChangeLog
+### v2.0.4
+* 部分style修改
+
 ### v2.0.3
 * 部分style修改
 

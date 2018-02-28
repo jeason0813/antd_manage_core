@@ -173,7 +173,7 @@ export default class TableToExcel extends React.Component {
           visible={this.state.visible}
           onCancel={::this.onCancel}
           onOk={::this.onOk}
-          width={620}
+          width={640}
           footer=""
         >
           {transferComponent}
