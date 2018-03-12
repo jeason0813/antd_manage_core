@@ -1,6 +1,9 @@
 # antd_manage_core
 
 # ChangeLog
+### v2.0.5
+* 修复 Google 二次验证
+
 ### v2.0.4
 * 部分style修改
 
