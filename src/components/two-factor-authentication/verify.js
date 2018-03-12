@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ReactDOM from 'react-dom';
 import styles from './verify.styl';
 import { Button, Input, message } from 'antd';
 import DI from '../../di';
@@ -16,7 +17,9 @@ class Verify extends React.Component {
   };
 
   componentWillMount() {
-    this.refs.code.refs.input.focus();
+    if (ReactDOM.findDOMNode(this.refs.code)) {
+      ReactDOM.findDOMNode(this.refs.code).focus();
+    }
   }
 
   onVerify() {
@@ -25,7 +28,7 @@ class Verify extends React.Component {
       verifyLoading: true
     });
     DI.get('authHttp')
-      .verifyKey(this.refs.code.refs.input.value)
+      .verifyKey(ReactDOM.findDOMNode(this.refs.code).value)
       .then(() => {
         DI.get('auth').setKeyVerified('Y');
         message.success('验证成功,身份验证器激活');
@@ -37,7 +40,7 @@ class Verify extends React.Component {
       })
       .catch(() => {
         message.error('验证失败,请重新输入6位验证码');
-        this.refs.code.refs.input.value = '';
+        ReactDOM.findDOMNode(this.refs.code).value = '';
         this.setState({
           verifyLoading: false
         });
