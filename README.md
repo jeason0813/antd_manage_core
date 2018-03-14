@@ -1,6 +1,9 @@
 # antd_manage_core
 
 # ChangeLog
+### v2.0.6
+* 添加 BugTag 支持
+
 ### v2.0.5
 * 修复 Google 二次验证
 
