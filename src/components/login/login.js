@@ -59,6 +59,10 @@ export default class Login extends React.Component {
               authService.setPermission(response.resourceMap)
             ]).then(() => {
               form.resetFields(['password']);
+              if (window.Bugtags) {
+                window.Bugtags.setUserData('real_name', response.account.real_name);
+                window.Bugtags.setUserData('mobile', response.account.mobile);
+              }
               this.setState({ loading: false });
               if (modal) {
                 onLoginSuccess();

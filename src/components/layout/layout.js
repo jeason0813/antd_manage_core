@@ -27,6 +27,10 @@ export default class Layout extends React.Component {
       if (!account || !account.real_name) {
         HashHistory.push('/login');
       } else {
+        if (window.Bugtags) {
+          window.Bugtags.setUserData('real_name', account.real_name);
+          window.Bugtags.setUserData('mobile', account.mobile);
+        }
         this.setState({ account });
       }
     });
