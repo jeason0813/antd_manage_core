@@ -67,7 +67,7 @@ export default class Login extends React.Component {
               if (modal) {
                 onLoginSuccess();
               } else {
-                let nextPathname = '/loan/merchant/stat';
+                let nextPathname = '/';
                 if (location.state && location.state.nextPathname) {
                   nextPathname = location.state.nextPathname;
                 }
