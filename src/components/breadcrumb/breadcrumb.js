@@ -21,6 +21,7 @@ class Breadcrumb extends React.Component {
   };
 
   componentWillMount() {
+    this.locationHasChanged();
     this.unsubscribed = HashHistory.listen(::this.locationHasChanged);
   }
 
@@ -29,7 +30,7 @@ class Breadcrumb extends React.Component {
   }
 
   locationHasChanged(toRoute) {
-    const pathname = toRoute.pathname;
+    const pathname = toRoute ? toRoute.pathname : HashHistory.location.pathname;
     if (pathname === '/') {
       DI.get('navigation').getDefault().then((breadcrumbs) => {
         this.setState({
@@ -37,7 +38,7 @@ class Breadcrumb extends React.Component {
         });
       });
     } else {
-      DI.get('navigation').getBreadcrumbs(toRoute.pathname).then((breadcrumbs) => {
+      DI.get('navigation').getBreadcrumbs(pathname).then((breadcrumbs) => {
         this.setState({
           breadcrumbs
         });
