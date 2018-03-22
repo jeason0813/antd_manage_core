@@ -1,6 +1,9 @@
 # antd_manage_core
 
 # ChangeLog
+### v2.0.7
+* 修复 navigation 第一次渲染不展开的问题
+
 ### v2.0.6
 * 添加 BugTag 支持
 
