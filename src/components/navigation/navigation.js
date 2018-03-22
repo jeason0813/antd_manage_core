@@ -27,7 +27,7 @@ class Navigation extends React.Component {
     DI.get('auth').listenPermissionChange(() => {
       this.getNavigation();
     });
-
+    this.locationHasChanged();
     this.unsubscribed = HashHistory.listen(::this.locationHasChanged);
   }
 
@@ -63,7 +63,7 @@ class Navigation extends React.Component {
   }
 
   locationHasChanged(toRoute) {
-    const path = toRoute.pathname;
+    const path = toRoute ? toRoute.pathname : HashHistory.location.pathname;
     if (path === '/') {
       DI.get('navigation')
         .getDefault()

@@ -120,7 +120,7 @@ export default class AccountInfo extends React.Component {
     );
     return (
       <div className={styles.container} >
-        <Dropdown overlay={menu} >
+        <Dropdown overlay={menu} trigger="click" >
           <a className="ant-dropdown-link" >
             {account ? account.real_name : ''} <Icon type="down" />
           </a>
