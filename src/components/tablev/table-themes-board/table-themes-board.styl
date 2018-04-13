@@ -1,0 +1,80 @@
+.container {
+  font-size: 12px;
+  display: inline-block;
+  position: relative;
+  top: -2px;
+  .themes {
+    margin-left: 10px;
+    font-size: 15px;
+    top: 0;
+    display: inline-block;
+    position: relative;
+    &:hover {
+      color: #d9007e;
+    }
+  }
+
+}
+
+.ttbModal {
+  :global(.ant-form) {
+    label {
+      font-size 12px;
+    }
+  }
+  :global(.ant-radio-button-wrapper) {
+    height: auto;
+  }
+  .tableDefault {
+    font-size: 12px;
+    line-height 20px;
+    margin-bottom 5px;
+    text-align center;
+    table {
+      width 50px;
+      box-sizing border-box;
+      border 1px solid #d9d9d9;
+    }
+    .tableSizeMiddle {
+      margin 2px 0 8px;
+      height 15px;
+    }
+    .tableSizeSmall {
+      margin 5px 0 10px;
+      height 10px;
+    }
+    .tableBordered {
+      height 20px;
+      th, td {
+        border 1px solid #d9d9d9;
+      }
+      &.tableBorderedLeft {
+        th, td {
+          border: none;
+        }
+        th:first-child, td:first-child {
+          border-right 1px solid #d9d9d9;
+        }
+      }
+      &.tableBorderRight {
+        th, td {
+          border: none;
+        }
+        th:last-child, td:last-child {
+          border-left 1px solid #d9d9d9;
+        }
+      }
+      &.tableBorderBoth {
+        th, td {
+          border: none;
+        }
+        th:first-child, td:first-child {
+          border-right 1px solid #d9d9d9;
+        }
+        th:last-child, td:last-child {
+          border-left 1px solid #d9d9d9;
+        }
+      }
+    }
+  }
+}

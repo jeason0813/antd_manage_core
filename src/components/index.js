@@ -5,6 +5,7 @@ export ConditionSearch from './condition-editor/condition-search';
 export ConditionHistory from './condition-editor/condition-history';
 export GoogleMaterialIcon from './google-material-icon/google-material-icon';
 export Table from './table/table';
+export TableV from './tablev/tablev';
 export TableToExcel from './table-to-excel/table-to-excel';
 export TableColumnManage from './table-column-manage/table-column-manage';
 export TableColumnHelp from './table-column-help/table-column-help';
