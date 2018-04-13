@@ -17,13 +17,13 @@ import {
   valueNotNull
 } from '../../condition-editor/conditions-utils';
 import { queryInjectCondition } from '../../../utils/common';
-import { generateNewCondition } from '../tablex-utils/tablex-utils';
+import { generateNewCondition } from '../tablev-utils/tablev-utils';
 import ConditionHistory from '../table-condition-history/table-condition-history';
 import ConditionControlBoard from '../condition-control-board/condition-control-board';
 import styles from '../../condition-editor/condition-search.styl';
 
 
-export default class TablexCondition extends React.Component {
+export default class TablevCondition extends React.Component {
 
   static propTypes = {
     name: PropTypes.string,

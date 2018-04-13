@@ -7,19 +7,19 @@ import DI from '../../di';
 import HashHistory from '../../router/hash-history';
 import OfflineStorge from '../../services/offline-storge';
 import AlertError from '../alert-error/alert-error';
-import TablexCondition from './tablex-condition/tablex-condition';
+import TablevCondition from './tablev-condition/tablev-condition';
 import TableControlBoard from './table-control-board/table-control-board';
 import TableThemesBoard from './table-themes-board/table-themes-board';
 import TableToExcel from '../table-to-excel/table-to-excel';
-import styles from './tablex.styl';
+import styles from './tablev.styl';
 
 import {
   generateQuery, generatePagination,
   generateOfflineColumns, generateFilterColumns,
   compareOfflineConfigs
-} from './tablex-utils/tablex-utils';
+} from './tablev-utils/tablev-utils';
 
-export default class TableX extends React.Component {
+export default class TableV extends React.Component {
 
   static propTypes = {
     httpService: PropTypes.object,
@@ -371,17 +371,17 @@ export default class TableX extends React.Component {
       queryString, searchStr
     } = this.state;
     let otherTableProps;
-    let tablexConditionComponent;
-    let tablexColumnManageComponent;
+    let tablevConditionComponent;
+    let tablevColumnManageComponent;
     let tableThemeBoardComponent;
-    let tablexToExcelComponent;
-    let tablexReloadComponent;
+    let tablevToExcelComponent;
+    let tablevReloadComponent;
     let cardTitle;
     let cardExtra;
 
     if (conditionSearch) {
-      tablexConditionComponent = (
-        <TablexCondition
+      tablevConditionComponent = (
+        <TablevCondition
           searchStr={searchStr}
           formatConditionQuery={formatConditionQuery}
           qsFormatSearchQuery={qsFormatSearchQuery}
@@ -392,7 +392,7 @@ export default class TableX extends React.Component {
       );
     }
 
-    tablexColumnManageComponent = (
+    tablevColumnManageComponent = (
       <TableControlBoard
         offlineColumns={offlineColumns}
         getTableColumnsWidth={::this.getTableColumnsWidth}
@@ -410,7 +410,7 @@ export default class TableX extends React.Component {
     );
 
     if (exportExcel) {
-      tablexToExcelComponent = (
+      tablevToExcelComponent = (
         <TableToExcel
           columns={filterColumns}
           httpService={httpService}
@@ -424,7 +424,7 @@ export default class TableX extends React.Component {
       );
     }
 
-    tablexReloadComponent = (
+    tablevReloadComponent = (
       <a className={styles.reload} onClick={() => this.fetchData()}>
         <Icon type="reload" />
       </a>
@@ -436,10 +436,10 @@ export default class TableX extends React.Component {
 
     cardExtra = (
       <div>
-        {tablexColumnManageComponent}
+        {tablevColumnManageComponent}
         {tableThemeBoardComponent}
-        {tablexToExcelComponent}
-        {tablexReloadComponent}
+        {tablevToExcelComponent}
+        {tablevReloadComponent}
       </div>
     );
 
@@ -482,7 +482,7 @@ export default class TableX extends React.Component {
 
     return (
       <div className={styles.container}>
-        {tablexConditionComponent}
+        {tablevConditionComponent}
         <AlertError
           message={dataLoadErrorMessage}
           onClick={::this.fetchData}
