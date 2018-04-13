@@ -1,6 +1,9 @@
 # antd_manage_core
 
 # ChangeLog
+### v2.1.0
+* 增加tableV
+
 ### v2.0.8
 * 修复 breadcrumb 第一次渲染问题
 
