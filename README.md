@@ -1,6 +1,9 @@
 # antd_manage_core
 
 # ChangeLog
+### v2.1.1
+* 修复tableV搜索传值问题
+
 ### v2.1.0
 * 增加tableV
 

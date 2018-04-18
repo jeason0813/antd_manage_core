@@ -16,12 +16,13 @@ import styles from './tablev.styl';
 import {
   generateQuery, generatePagination,
   generateOfflineColumns, generateFilterColumns,
-  compareOfflineConfigs
+  compareOfflineConfigs, formatSearchStr
 } from './tablev-utils/tablev-utils';
 
 export default class TableV extends React.Component {
 
   static propTypes = {
+    searchObj: PropTypes.object,
     httpService: PropTypes.object,
     fetchDataMethodName: PropTypes.string,
     deleteMethodName: PropTypes.string,
@@ -44,6 +45,7 @@ export default class TableV extends React.Component {
   };
 
   static defaultProps = {
+    searchObj: {},
     fetchDataMethodName: 'getAll',
     deleteMethodName: 'delete',
     exportExcel: false,
@@ -115,7 +117,13 @@ export default class TableV extends React.Component {
   }
 
   locationHasChanged() {
-    const searchStr = HashHistory.location.search.trim().replace(/^[?#&]/, '');
+    const { searchObj } = this.props;
+    let searchStr;
+    if (!_.isEmpty(searchObj)) {
+      searchStr = formatSearchStr(searchObj);
+    } else {
+      searchStr = HashHistory.location.search.trim().replace(/^[?#&]/, '');
+    }
     if (searchStr) {
       this.setState({ searchStr });
     } else {

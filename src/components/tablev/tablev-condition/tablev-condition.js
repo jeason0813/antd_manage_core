@@ -17,7 +17,7 @@ import {
   valueNotNull
 } from '../../condition-editor/conditions-utils';
 import { queryInjectCondition } from '../../../utils/common';
-import { generateNewCondition } from '../tablev-utils/tablev-utils';
+import { generateNewCondition, formatSearchObj } from '../tablev-utils/tablev-utils';
 import ConditionHistory from '../table-condition-history/table-condition-history';
 import ConditionControlBoard from '../condition-control-board/condition-control-board';
 import styles from '../../condition-editor/condition-search.styl';
@@ -56,24 +56,38 @@ export default class TablevCondition extends React.Component {
   };
 
   componentWillMount() {
-    const { conditions, userConditions, searchStr } = this.props;
-    if (searchStr) {
-      const locationQueryObject = qs.parse(searchStr);
-      queryInjectCondition(locationQueryObject, conditions);
-      this.onSearch();
-    }
+    const { userConditions, searchStr } = this.props;
+    const conditions = _.cloneDeep(this.props.conditions);
     this.prevConditionsString = '';
     this.prevUserConditionsString = '';
-    this.setInputConditions(conditions, userConditions);
-    this.initStateCondition();
+    let locationQueryObject;
+    if (searchStr) {
+      locationQueryObject = formatSearchObj(qs.parse(searchStr));
+      queryInjectCondition(locationQueryObject, conditions);
+      this.setInputConditions(conditions, userConditions, true);
+      this.initStateCondition();
+    } else {
+      locationQueryObject = {};
+      queryInjectCondition(locationQueryObject, conditions);
+      this.setInputConditions(conditions, userConditions);
+      this.initStateCondition();
+    }
   }
 
   componentWillReceiveProps(nextProps) {
-    const { conditions, searchStr } = this.props;
+    const { searchStr, userConditions } = this.props;
+    const conditions = _.cloneDeep(this.props.conditions);
+    let locationQueryObject;
     if (nextProps.searchStr !== searchStr) {
-      const locationQueryObject = qs.parse(searchStr);
-      queryInjectCondition(locationQueryObject, conditions);
-      this.onSearch();
+      if (nextProps.searchStr) {
+        locationQueryObject = formatSearchObj(qs.parse(nextProps.searchStr));
+        queryInjectCondition(locationQueryObject, conditions);
+        this.setInputConditions(conditions, userConditions, true);
+      } else {
+        locationQueryObject = {};
+        queryInjectCondition(locationQueryObject, conditions);
+        this.setInputConditions(conditions, userConditions);
+      }
     }
   }
 
@@ -169,7 +183,7 @@ export default class TablevCondition extends React.Component {
     });
   }
 
-  setInputConditions(inputConditions, inputUserConditions) {
+  setInputConditions(inputConditions, inputUserConditions, useSearch) {
     if (inputConditions && inputUserConditions) {
       const conditions =
         arrayToStateConditions(this.parseInputConditions(inputConditions), this, false);
@@ -178,6 +192,10 @@ export default class TablevCondition extends React.Component {
       this.setState({
         conditions,
         userConditions
+      }, () => {
+        if (useSearch) {
+          this.onSearch();
+        }
       });
     } else if (inputConditions) {
       this.setState({
