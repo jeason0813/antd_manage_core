@@ -167,3 +167,26 @@ export const generateNewCondition = (conditions, offlineConditions) => {
   return newConditions;
 };
 
+export const formatSearchStr = (searchObj) => {
+  let query = '';
+  const searchKeys = Object.keys(searchObj);
+  if (searchKeys.length > 0) {
+    for (let i = 0; i < searchKeys.length; i++) {
+      query += `${searchKeys[i]}=${searchObj[`${searchKeys[i]}`]}&`;
+    }
+  }
+  return query.slice(0, -1);
+};
+
+export const formatSearchObj = (searchObj) => {
+  const newSearchObj = {};
+  _.map(searchObj, (v, k) => {
+    if (v === `${Number(v)}`) {
+      newSearchObj[k] = Number(v);
+    } else {
+      newSearchObj[k] = v;
+    }
+  });
+  return newSearchObj;
+};
+
